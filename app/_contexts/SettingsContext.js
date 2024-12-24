@@ -7,11 +7,17 @@ const SettingsContext = createContext();
 export function SettingsProvider({ children }) {
   // TODO: Remove fallback color?
   const [inputColor, setInputColor] = useState("#14b8a6");
-
-  // TODO: Add setting to save the selected contrast ratio
+  const [requiredContrastRatio, setRequiredContrastRatio] = useState("4.5");
 
   return (
-    <SettingsContext.Provider value={{ inputColor, setInputColor }}>
+    <SettingsContext.Provider
+      value={{
+        inputColor,
+        setInputColor,
+        requiredContrastRatio,
+        setRequiredContrastRatio,
+      }}
+    >
       {children}
     </SettingsContext.Provider>
   );
