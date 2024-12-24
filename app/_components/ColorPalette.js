@@ -1,10 +1,14 @@
+"use client";
+
+import { useSettings } from "@/app/_contexts/SettingsContext";
 import { generateColorPalette } from "@/app/_lib/colors";
 
-export default function ColorPalette({ color }) {
-  const colorPalette = generateColorPalette(color);
+export default function ColorPalette() {
+  const { inputColor } = useSettings();
+  const colorPalette = generateColorPalette(inputColor);
 
   return (
-    <>
+    <div>
       <div className="grid grid-cols-4 gap-4">
         <span>Key</span>
         <span>3.0</span>
@@ -23,6 +27,6 @@ export default function ColorPalette({ color }) {
           <span style={{ color: value.contrast7 }}>{value.color}</span>
         </div>
       ))}
-    </>
+    </div>
   );
 }

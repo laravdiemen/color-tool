@@ -1,4 +1,5 @@
 import { Roboto } from "next/font/google";
+import { SettingsProvider } from "@/app/_contexts/SettingsContext";
 import "@/app/_styles/globals.css";
 
 const roboto = Roboto({
@@ -20,7 +21,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${roboto.variable} font-sans antialiased`}>
-        <main>{children}</main>
+        <main>
+          <SettingsProvider>{children}</SettingsProvider>
+        </main>
       </body>
     </html>
   );
