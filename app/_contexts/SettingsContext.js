@@ -1,26 +1,45 @@
 "use client";
 
-import { createContext, useState, useContext, useEffect } from "react";
+import {
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+  useCallback,
+} from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { generateColorPalette } from "@/app/_lib/colors";
 
 const SettingsContext = createContext();
 
 export function SettingsProvider({ children }) {
-  // TODO: Remove fallback color?
-  const [inputColor, setInputColor] = useState("#14b8a6");
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [inputColor, setInputColor] = useState("");
   const [colorPalette, setColorPalette] = useState({});
   const [requiredContrastRatio, setRequiredContrastRatio] = useState("4.5");
 
-  const updateInputColor = (color) => {
-    setInputColor(color);
-    setColorPalette(generateColorPalette(color));
-  };
+  const updateInputColor = useCallback(
+    (color) => {
+      setInputColor(color);
+      setColorPalette(generateColorPalette(color));
+
+      const params = new URLSearchParams(searchParams);
+      params.set("color", color.substring(1));
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    },
+    [searchParams, router, pathname]
+  );
 
   useEffect(() => {
-    if (inputColor) {
-      setColorPalette(generateColorPalette(inputColor));
+    const activeColor = searchParams.get("color");
+
+    if (activeColor) {
+      updateInputColor("#" + activeColor);
     }
-  }, [inputColor]);
+  }, [searchParams, updateInputColor]);
 
   return (
     <SettingsContext.Provider

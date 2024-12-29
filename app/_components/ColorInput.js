@@ -1,32 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useSettings } from "@/app/_contexts/SettingsContext";
 
 export default function ColorInput() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
-  const { inputColor, setInputColor, updateInputColor } = useSettings();
-
-  useEffect(() => {
-    const activeColor = searchParams.get("color") ?? "";
-
-    if (activeColor) {
-      // TODO: Fix the issue that you see 1 second the fallback color
-      setInputColor("#" + activeColor);
-    }
-  }, [searchParams, setInputColor]);
+  const { inputColor, updateInputColor } = useSettings();
 
   function handleColorInput(e) {
     // TODO: Add check if the input is a valid hex color
-    const selectedColor = e.target.value;
-    updateInputColor(selectedColor);
-
-    const params = new URLSearchParams(searchParams);
-    params.set("color", selectedColor.substring(1));
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    updateInputColor(e.target.value);
   }
 
   // TODO: Add a text input as well with validation for hex colors
