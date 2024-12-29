@@ -1,14 +1,14 @@
 "use client";
 
+import { useEffect } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useSettings } from "@/app/_contexts/SettingsContext";
-import { useEffect } from "react";
 
 export default function ColorInput() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const { inputColor, setInputColor } = useSettings();
+  const { inputColor, setInputColor, updateInputColor } = useSettings();
 
   useEffect(() => {
     const activeColor = searchParams.get("color") ?? "";
@@ -22,7 +22,8 @@ export default function ColorInput() {
   function handleColorInput(e) {
     // TODO: Add check if the input is a valid hex color
     const selectedColor = e.target.value;
-    setInputColor(selectedColor);
+    updateInputColor(selectedColor);
+
     const params = new URLSearchParams(searchParams);
     params.set("color", selectedColor);
     // TODO: Remove # from url?

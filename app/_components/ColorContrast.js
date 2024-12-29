@@ -1,39 +1,32 @@
 "use client";
 
 import { useSettings } from "@/app/_contexts/SettingsContext";
-import {
-  calculateContrastRatio,
-  generateColorPalette,
-} from "@/app/_lib/colors";
+import { calculateContrastRatio } from "@/app/_lib/colors";
 
 export default function ColorContrast() {
-  const { inputColor } = useSettings();
-  // TODO: Save color palette somewhere?
-  const colorPalette = generateColorPalette(inputColor);
-
   return (
-    <div className="flex gap-4">
-      <Tile contrastColor={"#FFFFFF"}>White #FFFFFF</Tile>
-
-      <Tile contrastColor={colorPalette[50].color}>
-        50 {colorPalette[50].color}
-      </Tile>
-
-      <Tile contrastColor={colorPalette[950].color}>
-        950 {colorPalette[950].color}
-      </Tile>
-
-      <Tile contrastColor={"#000000"}>Black #000000</Tile>
+    <div className="flex flex-wrap gap-4">
+      <Tile value={0} />
+      <Tile value={50} />
+      <Tile value={950} />
+      <Tile value={1000} />
     </div>
   );
 }
 
-function Tile({ contrastColor, children }) {
-  const { inputColor, requiredContrastRatio } = useSettings();
+function Tile({ value }) {
+  const { inputColor, requiredContrastRatio, colorPalette } = useSettings();
+  const contrastColor = colorPalette[value]?.color;
+
+  if (!contrastColor) return null;
+
   const contrastRatio = calculateContrastRatio(inputColor, contrastColor);
+  const passesContrast =
+    parseFloat(contrastRatio) >= parseFloat(requiredContrastRatio);
 
   return (
-    <div className="flex items-center flex-col gap-2">
+    <div className="flex items-center flex-col gap-2 min-w-20">
+      <div>{value}</div>
       <div
         style={{
           backgroundColor: inputColor,
@@ -43,14 +36,13 @@ function Tile({ contrastColor, children }) {
       >
         <span className="font-bold">{contrastRatio}</span>:1
       </div>
+      <div>{contrastColor}</div>
       <div
         className={`${
-          parseFloat(contrastRatio) >= parseFloat(requiredContrastRatio)
-            ? "bg-green-500"
-            : "bg-red-500"
+          passesContrast ? "bg-green-500" : "bg-red-500"
         } rounded-full px-3 py-1`}
       >
-        {children}
+        {passesContrast ? "Passes" : "Fails"}
       </div>
     </div>
   );

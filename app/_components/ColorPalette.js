@@ -1,11 +1,9 @@
 "use client";
 
 import { useSettings } from "@/app/_contexts/SettingsContext";
-import { generateColorPalette } from "@/app/_lib/colors";
 
 export default function ColorPalette() {
-  const { inputColor, requiredContrastRatio } = useSettings();
-  const colorPalette = generateColorPalette(inputColor);
+  const { requiredContrastRatio, colorPalette } = useSettings();
 
   return (
     // TODO: Add a button to copy a tailwind config
