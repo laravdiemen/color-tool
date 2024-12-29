@@ -10,7 +10,7 @@ export default function Page() {
 
       <div className="bg-slate-200 rounded-lg md:rounded-2xl p-4 md:p-6">
         <div className="flex items-center gap-4">
-          <h2 className="font-bold text-2xl">Select your base color:</h2>
+          <h2 className="font-bold text-2xl">Add your base color:</h2>
           <ColorInput />
         </div>
       </div>
