@@ -20,7 +20,7 @@ export default function ColorContrast() {
 }
 
 function Tile({ number, contrastColor, contrastRatio }) {
-  const { inputColor, requiredContrastRatio } = useSettings();
+  const { baseColor, requiredContrastRatio } = useSettings();
 
   if (!contrastColor) return null;
 
@@ -32,7 +32,7 @@ function Tile({ number, contrastColor, contrastRatio }) {
       <div className="text-sm">{number}</div>
       <div
         style={{
-          backgroundColor: inputColor,
+          backgroundColor: baseColor,
           color: contrastColor,
         }}
         className="rounded size-20 flex items-center justify-center"

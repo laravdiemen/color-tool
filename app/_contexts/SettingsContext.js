@@ -17,13 +17,13 @@ export function SettingsProvider({ children }) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [inputColor, setInputColor] = useState("");
+  const [baseColor, setBaseColor] = useState("");
   const [colorPalette, setColorPalette] = useState({});
   const [requiredContrastRatio, setRequiredContrastRatio] = useState("4.5");
 
-  const updateInputColor = useCallback(
+  const updateBaseColor = useCallback(
     (color) => {
-      setInputColor(color);
+      setBaseColor(color);
       setColorPalette(generateColorPalette(color));
 
       const params = new URLSearchParams(searchParams);
@@ -48,9 +48,9 @@ export function SettingsProvider({ children }) {
     const activeColor = searchParams.get("color");
 
     if (activeColor) {
-      updateInputColor("#" + activeColor);
+      updateBaseColor("#" + activeColor);
     }
-  }, [searchParams, updateInputColor]);
+  }, [searchParams, updateBaseColor]);
 
   useEffect(() => {
     const activeRatio = searchParams.get("ratio");
@@ -63,8 +63,8 @@ export function SettingsProvider({ children }) {
   return (
     <SettingsContext.Provider
       value={{
-        inputColor,
-        updateInputColor,
+        baseColor,
+        updateBaseColor,
         colorPalette,
         requiredContrastRatio,
         updateRequiredContrastRatio,

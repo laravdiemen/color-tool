@@ -3,13 +3,13 @@
 import { useSettings } from "@/app/_contexts/SettingsContext";
 
 export default function ColorInput() {
-  const { inputColor, updateInputColor } = useSettings();
+  const { baseColor, updateBaseColor } = useSettings();
 
   function handleColorInput(e) {
     // TODO: Add check if the input is a valid hex color
-    updateInputColor(e.target.value);
+    updateBaseColor(e.target.value);
   }
 
   // TODO: Add a text input as well with validation for hex colors
-  return <input type="color" value={inputColor} onChange={handleColorInput} />;
+  return <input type="color" value={baseColor} onChange={handleColorInput} />;
 }
