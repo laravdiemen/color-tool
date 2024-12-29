@@ -11,7 +11,8 @@ export default function RequiredContrastRatio() {
   }
 
   return (
-    <div className="flex gap-4">
+    <div className="flex sm:items-center gap-2 flex-col sm:flex-row flex-wrap w-full sm:w-fit">
+      <h3>Required ratio:</h3>
       <Button
         value="3.0"
         handleClick={handleClick}
@@ -34,8 +35,8 @@ export default function RequiredContrastRatio() {
 function Button({ value, handleClick, activeValue }) {
   return (
     <button
-      className={`bg-gray-200 rounded px-3 py-2 ${
-        activeValue === value ? "bg-gray-400" : ""
+      className={`border-slate-400 border rounded px-3 py-2 ${
+        activeValue === value ? "bg-slate-400" : ""
       }`}
       onClick={() => handleClick(value)}
     >

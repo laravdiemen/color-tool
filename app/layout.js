@@ -20,8 +20,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} font-sans antialiased`}>
-        <main>
+      <body className={`${roboto.variable} font-sans antialiased bg-slate-50`}>
+        <main className="p-4 max-w-screen-xl mx-auto flex flex-col gap-4">
           <SettingsProvider>{children}</SettingsProvider>
         </main>
       </body>

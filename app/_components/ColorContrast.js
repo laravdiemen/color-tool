@@ -5,7 +5,7 @@ import { calculateContrastRatio } from "@/app/_lib/colors";
 
 export default function ColorContrast() {
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap gap-x-1 gap-y-8">
       <Tile value={0} />
       <Tile value={50} />
       <Tile value={950} />
@@ -25,18 +25,18 @@ function Tile({ value }) {
     parseFloat(contrastRatio) >= parseFloat(requiredContrastRatio);
 
   return (
-    <div className="flex items-center flex-col gap-2 min-w-20">
-      <div>{value}</div>
+    <div className="flex items-center flex-col gap-2">
+      <div className="text-sm">{value}</div>
       <div
         style={{
           backgroundColor: inputColor,
           color: contrastColor,
         }}
-        className="size-16 flex items-center justify-center"
+        className="rounded size-20 flex items-center justify-center"
       >
         <span className="font-bold">{contrastRatio}</span>:1
       </div>
-      <div>{contrastColor}</div>
+      <div className="text-xs">{contrastColor}</div>
       <div
         className={`${
           passesContrast ? "bg-green-500" : "bg-red-500"
