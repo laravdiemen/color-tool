@@ -33,6 +33,17 @@ export function SettingsProvider({ children }) {
     [searchParams, router, pathname]
   );
 
+  const updateRequiredContrastRatio = useCallback(
+    (ratio) => {
+      setRequiredContrastRatio(ratio);
+
+      const params = new URLSearchParams(searchParams);
+      params.set("ratio", ratio);
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    },
+    [searchParams, router, pathname]
+  );
+
   useEffect(() => {
     const activeColor = searchParams.get("color");
 
@@ -41,16 +52,22 @@ export function SettingsProvider({ children }) {
     }
   }, [searchParams, updateInputColor]);
 
+  useEffect(() => {
+    const activeRatio = searchParams.get("ratio");
+
+    if (activeRatio) {
+      setRequiredContrastRatio(activeRatio);
+    }
+  }, [searchParams]);
+
   return (
     <SettingsContext.Provider
       value={{
         inputColor,
-        setInputColor,
         updateInputColor,
         colorPalette,
-        setColorPalette,
         requiredContrastRatio,
-        setRequiredContrastRatio,
+        updateRequiredContrastRatio,
       }}
     >
       {children}
