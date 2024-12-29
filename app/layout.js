@@ -11,8 +11,8 @@ const roboto = Roboto({
 
 export const metadata = {
   title: {
-    template: "%s | Color Generator",
-    default: "Welcome | Color Generator",
+    template: "%s | Color Tool",
+    default: "Welcome | Color Tool",
   },
   description: "Generated colors for your next project",
 };
