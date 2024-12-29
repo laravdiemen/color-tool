@@ -15,7 +15,7 @@ export default function ColorInput() {
 
     if (activeColor) {
       // TODO: Fix the issue that you see 1 second the fallback color
-      setInputColor(activeColor);
+      setInputColor("#" + activeColor);
     }
   }, [searchParams, setInputColor]);
 
@@ -25,8 +25,7 @@ export default function ColorInput() {
     updateInputColor(selectedColor);
 
     const params = new URLSearchParams(searchParams);
-    params.set("color", selectedColor);
-    // TODO: Remove # from url?
+    params.set("color", selectedColor.substring(1));
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   }
 
