@@ -91,21 +91,22 @@ export function getLuminance(hexColor) {
   return 0.2126 * red + 0.7152 * green + 0.0722 * blue;
 }
 
-export function calculateContrastWhite(luminance) {
-  return (1.0 + 0.05) / (luminance + 0.05);
-}
+// Helper function to calculates the contrast ration between two colors.
+export function calculateContrastRatio(color, colorContrast) {
+  const luminance = getLuminance(color);
+  const luminanceContrast = getLuminance(colorContrast);
 
-export function calculateContrastBlack(luminance) {
-  return (luminance + 0.05) / (0.0 + 0.05);
+  const lighter = Math.max(luminance, luminanceContrast);
+  const darker = Math.min(luminance, luminanceContrast);
+
+  return ((lighter + 0.05) / (darker + 0.05)).toFixed(2);
 }
 
 // Determines the best contrasting text color (black or white) for a given background hex color based on the specified contrast ratio requirement for WCAG compliance.
 export function getContrastColor(hexColor, requiredRatio = 4.5) {
-  const luminance = getLuminance(hexColor);
-
   // Calculate contrast ratios
-  const contrastWhite = calculateContrastWhite(luminance);
-  const contrastBlack = calculateContrastBlack(luminance);
+  const contrastWhite = calculateContrastRatio(hexColor, "#FFFFFF");
+  const contrastBlack = calculateContrastRatio(hexColor, "#000000");
 
   // Check if either white or black meets the required contrast ratio
   if (contrastWhite >= requiredRatio) {
