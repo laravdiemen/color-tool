@@ -19,6 +19,7 @@ export function generateColorPalette(hexColor) {
 
   for (const [key, opacity] of Object.entries(opacities)) {
     palette[key] = getSingleColor(
+      hexColor,
       getHexColorWithOpacity(hexColor, opacity, key >= 600 ? 0 : 255)
     );
   }
@@ -27,12 +28,13 @@ export function generateColorPalette(hexColor) {
 }
 
 // Helper function to generate a color object
-export function getSingleColor(hexColor) {
+export function getSingleColor(baseHexColor, hexColor) {
   return {
     color: hexColor,
     contrast3: getContrastColor(hexColor, 3),
     contrast45: getContrastColor(hexColor, 4.5),
     contrast7: getContrastColor(hexColor, 7),
+    contrastRatioBaseColor: calculateContrastRatio(baseHexColor, hexColor),
   };
 }
 
