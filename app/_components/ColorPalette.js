@@ -1,5 +1,6 @@
 "use client";
 
+import { ClipboardDocumentIcon } from "@heroicons/react/24/outline";
 import { useSettings } from "@/app/_contexts/SettingsContext";
 
 export default function ColorPalette() {
@@ -37,11 +38,12 @@ function Tile({ number, color, colorContrast }) {
       >
         <button
           style={{ color: colorContrast }}
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 focus:opacity-100"
+          className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 focus:opacity-100"
           onClick={copyColorToClipboard}
+          title={`Copy ${color} to clipboard`}
         >
-          {/* TODO: Use copy icon */}
-          Copy <span className="sr-only">{color} to clipboard</span>
+          <ClipboardDocumentIcon className="size-6" />
+          <span className="sr-only">Copy {color} to clipboard</span>
         </button>
       </div>
       <div className="text-xs">{color}</div>
