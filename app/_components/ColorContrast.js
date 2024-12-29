@@ -42,7 +42,7 @@ function Tile({ number, contrastColor, contrastRatio }) {
       <div className="text-xs">{contrastColor}</div>
       <div
         className={`${
-          passesContrast ? "bg-green-500" : "bg-red-500"
+          passesContrast ? "bg-green-700 text-white" : "bg-red-600 text-white"
         } rounded-full px-3 py-1`}
       >
         {passesContrast ? "Passes" : "Fails"}

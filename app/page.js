@@ -21,7 +21,7 @@ export default function Page() {
       </div>
 
       <div className="bg-slate-200 rounded-lg md:rounded-2xl p-4 md:p-6">
-        <div className="flex flex-wrap gap-4 justify-between mb-4">
+        <div className="flex flex-wrap gap-4 justify-between mb-6">
           <h2 className="font-bold text-2xl">Contrast ratio with base color</h2>
           <RequiredContrastRatio />
         </div>
