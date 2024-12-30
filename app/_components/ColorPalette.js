@@ -1,6 +1,7 @@
 "use client";
 
 import { ClipboardDocumentIcon } from "@heroicons/react/24/outline";
+import toast from "react-hot-toast";
 import { useSettings } from "@/app/_contexts/SettingsContext";
 
 export default function ColorPalette() {
@@ -23,8 +24,8 @@ export default function ColorPalette() {
 
 function Tile({ number, color, colorContrast }) {
   function copyColorToClipboard() {
-    // TODO: Add message/feedback when a color is copied
     navigator.clipboard.writeText(color);
+    toast.success(color + " is copied to clipboard");
   }
 
   return (

@@ -1,4 +1,5 @@
 import { Roboto } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import { SettingsProvider } from "@/app/_contexts/SettingsContext";
 import "@/app/_styles/globals.css";
 
@@ -23,6 +24,8 @@ export default function RootLayout({ children }) {
       <body className={`${roboto.variable} font-sans antialiased bg-slate-50`}>
         <main className="px-4 py-6 md:py-8 max-w-screen-md xl:max-w-screen-xl mx-auto flex flex-col gap-4">
           <SettingsProvider>{children}</SettingsProvider>
+
+          <Toaster position="top-right" />
         </main>
       </body>
     </html>
