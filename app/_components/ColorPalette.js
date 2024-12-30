@@ -1,6 +1,6 @@
 "use client";
 
-import { ClipboardDocumentIcon } from "@heroicons/react/24/outline";
+import { DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
 import { useSettings } from "@/app/_contexts/SettingsContext";
 
@@ -44,7 +44,7 @@ function Tile({ number, color, colorContrast }) {
           onClick={copyColorToClipboard}
           title={`Copy ${color} to clipboard`}
         >
-          <ClipboardDocumentIcon className="size-6" />
+          <DocumentDuplicateIcon className="size-6" />
           <span className="sr-only">Copy {color} to clipboard</span>
         </button>
       </div>

@@ -2,7 +2,7 @@
 
 import {
   CheckIcon,
-  ClipboardDocumentIcon,
+  DocumentDuplicateIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
@@ -55,7 +55,7 @@ function Tile({ number, contrastColor, contrastRatio }) {
           onClick={copyColorToClipboard}
           title={`Copy ${contrastColor} to clipboard`}
         >
-          <ClipboardDocumentIcon className="size-6" />
+          <DocumentDuplicateIcon className="size-6" />
           <span className="sr-only">Copy {contrastColor} to clipboard</span>
         </button>
       </div>
