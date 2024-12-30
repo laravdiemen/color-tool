@@ -66,9 +66,21 @@ function Tile({ number, contrastColor, contrastRatio }) {
         } rounded-full size-8 flex items-center justify-center max-sm:ml-auto`}
       >
         {passesContrast ? (
-          <CheckIcon className="size-4" />
+          <>
+            <CheckIcon className="size-4" />
+            <span className="sr-only">
+              {contrastColor} has sufficient contrast with {baseColor} to meet
+              the required ratio of {requiredContrastRatio}:1
+            </span>
+          </>
         ) : (
-          <XMarkIcon className="size-4" />
+          <>
+            <XMarkIcon className="size-4" />
+            <span className="sr-only">
+              {contrastColor} has not sufficient contrast with {baseColor} to
+              meet the required ratio of {requiredContrastRatio}:1
+            </span>
+          </>
         )}
       </div>
     </div>
