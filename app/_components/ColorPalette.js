@@ -22,6 +22,7 @@ export default function ColorPalette() {
   );
 }
 
+// TODO: Create reusable component for ColorTile to share with ColorContrast
 function Tile({ number, color, colorContrast }) {
   function copyColorToClipboard() {
     navigator.clipboard.writeText(color);
@@ -39,7 +40,7 @@ function Tile({ number, color, colorContrast }) {
       >
         <button
           style={{ color: colorContrast }}
-          className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 focus:opacity-100"
+          className="absolute inset-0 flex bg-inherit transition items-center justify-center opacity-0 group-hover:opacity-100 focus:opacity-100"
           onClick={copyColorToClipboard}
           title={`Copy ${color} to clipboard`}
         >
