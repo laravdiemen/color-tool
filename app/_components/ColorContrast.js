@@ -12,7 +12,7 @@ export default function ColorContrast() {
   const { colorPalette } = useSettings();
 
   return (
-    <div className="flex flex-wrap gap-x-1 gap-y-8">
+    <div className="flex flex-wrap flex-col gap-1 sm:gap-y-8 sm:flex-row">
       {Object.entries(colorPalette).map(([key, value]) => (
         <Tile
           key={key}
@@ -40,14 +40,14 @@ function Tile({ number, contrastColor, contrastRatio }) {
   }
 
   return (
-    <div className="flex items-center flex-col gap-2">
-      <div className="text-sm">{number}</div>
+    <div className="flex items-center flex-row sm:flex-col gap-y-2 gap-x-4 max-sm:w-full">
+      <div className="text-sm max-sm:min-w-8">{number}</div>
       <div
         style={{
           backgroundColor: baseColor,
           color: contrastColor,
         }}
-        className="relative group rounded size-20 flex items-center justify-center"
+        className="relative group rounded size-20 flex items-center justify-center max-sm:order-first"
       >
         <span className="font-bold">{contrastRatio}</span>:1
         <button
@@ -59,11 +59,11 @@ function Tile({ number, contrastColor, contrastRatio }) {
           <span className="sr-only">Copy {contrastColor} to clipboard</span>
         </button>
       </div>
-      <div className="text-xs">{contrastColor}</div>
+      <div className="sm:text-xs max-sm:font-bold">{contrastColor}</div>
       <div
         className={`${
           passesContrast ? "bg-green-700 text-white" : "bg-red-600 text-white"
-        } rounded-full size-8 flex items-center justify-center`}
+        } rounded-full size-8 flex items-center justify-center max-sm:ml-auto`}
       >
         {passesContrast ? (
           <CheckIcon className="size-4" />

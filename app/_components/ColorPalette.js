@@ -9,7 +9,7 @@ export default function ColorPalette() {
 
   return (
     // TODO: Add a button to copy a tailwind config (v3 or v4)
-    <div className="flex flex-wrap gap-x-1 gap-y-8">
+    <div className="flex flex-wrap flex-col gap-1 sm:gap-y-8 sm:flex-row">
       {Object.entries(colorPalette).map(([key, value]) => (
         <Tile
           key={key}
@@ -30,13 +30,13 @@ function Tile({ number, color, colorContrast }) {
   }
 
   return (
-    <div className="flex items-center flex-col gap-2">
-      <div className="text-sm">{number}</div>
+    <div className="flex items-center flex-row sm:flex-col gap-y-2 gap-x-4">
+      <div className="text-sm max-sm:min-w-8">{number}</div>
       <div
         style={{
           backgroundColor: color,
         }}
-        className="relative group rounded size-20 flex items-center justify-center"
+        className="relative group rounded size-20 flex items-center justify-center max-sm:order-first"
       >
         <button
           style={{ color: colorContrast }}
@@ -48,7 +48,7 @@ function Tile({ number, color, colorContrast }) {
           <span className="sr-only">Copy {color} to clipboard</span>
         </button>
       </div>
-      <div className="text-xs">{color}</div>
+      <div className="sm:text-xs max-sm:font-bold">{color}</div>
     </div>
   );
 }
