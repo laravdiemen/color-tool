@@ -26,7 +26,7 @@ export function generateColorPalette(hexColor) {
   for (const [key, opacity] of Object.entries(opacities)) {
     palette[key] = getSingleColor(
       hexColor,
-      getHexColorWithOpacity(hexColor, opacity, key >= 600 ? 0 : 255)
+      getHexColorWithOpacity(hexColor, opacity, key >= 600 ? 0 : 255),
     );
   }
 
@@ -91,7 +91,7 @@ export function getHexColorWithOpacity(hexColor, opacity, background = 255) {
   const blendedBlue = blendColorComponent(blue, opacity, background);
 
   return `#${colorComponentToHex(blendedRed)}${colorComponentToHex(
-    blendedGreen
+    blendedGreen,
   )}${colorComponentToHex(blendedBlue)}`;
 }
 

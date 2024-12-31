@@ -8,7 +8,7 @@ export default function ColorPalette() {
 
   return (
     // TODO: Add a button to copy a tailwind config (v3 or v4)
-    <div className="flex flex-wrap flex-col gap-1 sm:gap-y-8 sm:flex-row">
+    <div className="flex flex-col flex-wrap gap-1 sm:flex-row sm:gap-y-8">
       {Object.entries(colorPalette).map(([key, value]) => (
         <Tile key={key}>
           <Tile.NumberLabel number={key} />

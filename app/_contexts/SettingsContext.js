@@ -33,7 +33,7 @@ export function SettingsProvider({ children }) {
       params.set("color", color.substring(1));
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     },
-    [searchParams, router, pathname]
+    [searchParams, router, pathname],
   );
 
   const updateRequiredContrastRatio = useCallback(
@@ -48,7 +48,7 @@ export function SettingsProvider({ children }) {
       params.set("ratio", ratio);
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     },
-    [searchParams, router, pathname]
+    [searchParams, router, pathname],
   );
 
   const resetContrastRatioParam = useCallback(() => {

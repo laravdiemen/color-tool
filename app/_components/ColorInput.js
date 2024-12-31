@@ -46,7 +46,7 @@ export default function ColorInput() {
           Hex color
         </label>
         <div className="relative">
-          <span className="absolute top-1/2 left-2 -translate-y-1/2">#</span>
+          <span className="absolute left-2 top-1/2 -translate-y-1/2">#</span>
 
           <input
             id="hex-color-input"
@@ -55,7 +55,7 @@ export default function ColorInput() {
             onChange={validateHexColorInput}
             maxLength={7}
             placeholder="RRGGBB"
-            className="py-1.5 pl-5 pr-3 rounded border border-slate-400"
+            className="rounded border border-slate-400 py-1.5 pl-5 pr-3"
           />
         </div>
       </div>
@@ -63,14 +63,14 @@ export default function ColorInput() {
         <label htmlFor="color-picker" className="sr-only">
           Color picker
         </label>
-        <div className="py-2 px-3 border border-slate-400 rounded relative transition hover:bg-slate-400">
-          <EyeDropperIcon className="size-4 pointer-events-none" />
+        <div className="relative rounded border border-slate-400 px-3 py-2 transition hover:bg-slate-400">
+          <EyeDropperIcon className="pointer-events-none size-4" />
           <input
             id="color-picker"
             type="color"
             value={baseColor}
             onChange={handleColorInput}
-            className="opacity-0 absolute inset-0 size-full"
+            className="absolute inset-0 size-full opacity-0"
           />
         </div>
       </div>

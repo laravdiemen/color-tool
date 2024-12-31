@@ -25,7 +25,7 @@ export default function Page() {
       </Wrapper>
 
       <Wrapper>
-        <div className="flex flex-wrap gap-4 justify-between mb-6">
+        <div className="mb-6 flex flex-wrap justify-between gap-4">
           <Heading as="h2">Add your base color:</Heading>
           <RequiredContrastRatio />
         </div>

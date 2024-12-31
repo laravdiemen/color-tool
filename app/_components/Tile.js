@@ -10,7 +10,7 @@ import { useSettings } from "@/app/_contexts/SettingsContext";
 
 export default function Tile({ children }) {
   return (
-    <div className="flex items-center flex-row sm:flex-col gap-y-2 gap-x-4 max-sm:w-full">
+    <div className="flex flex-row items-center gap-x-4 gap-y-2 max-sm:w-full sm:flex-col">
       {children}
     </div>
   );
@@ -32,7 +32,7 @@ function ColorSquare({ bgColor, textColor, colorToCopy, contrastRatio }) {
         backgroundColor: bgColor,
         color: textColor,
       }}
-      className="relative group rounded size-20 flex items-center justify-center max-sm:order-first"
+      className="group relative flex size-20 items-center justify-center rounded max-sm:order-first"
     >
       {contrastRatio && (
         <>
@@ -40,7 +40,7 @@ function ColorSquare({ bgColor, textColor, colorToCopy, contrastRatio }) {
         </>
       )}
       <button
-        className="absolute inset-0 flex bg-inherit transition items-center justify-center opacity-0 group-hover:opacity-100 focus:opacity-100"
+        className="absolute inset-0 flex items-center justify-center bg-inherit opacity-0 transition focus:opacity-100 group-hover:opacity-100"
         onClick={copyColorToClipboard}
         title={`Copy ${colorToCopy} to clipboard`}
       >
@@ -52,7 +52,7 @@ function ColorSquare({ bgColor, textColor, colorToCopy, contrastRatio }) {
 }
 
 function ColorLabel({ color }) {
-  return <div className="sm:text-xs max-sm:font-bold">{color}</div>;
+  return <div className="max-sm:font-bold sm:text-xs">{color}</div>;
 }
 
 function PassesContrastLabel({ colorContrast, contrastRatio }) {
@@ -65,7 +65,7 @@ function PassesContrastLabel({ colorContrast, contrastRatio }) {
     <div
       className={`${
         passesContrast ? "bg-green-700 text-white" : "bg-red-600 text-white"
-      } rounded-full size-8 flex items-center justify-center max-sm:ml-auto`}
+      } flex size-8 items-center justify-center rounded-full max-sm:ml-auto`}
     >
       {passesContrast ? (
         <>
