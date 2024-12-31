@@ -1,14 +1,16 @@
 "use client";
 
 import { useSettings } from "@/app/_contexts/SettingsContext";
+import { POSSIBLE_CONTRAST_RATIO } from "@/app/_lib/contrastRatio";
 
 export default function RequiredContrastRatio() {
   return (
     <div className="flex sm:items-center gap-2 flex-col sm:flex-row flex-wrap w-full sm:w-fit">
       <h3>Required ratio:</h3>
-      <Button value="3.0" />
-      <Button value="4.5" />
-      <Button value="7.0" />
+
+      {POSSIBLE_CONTRAST_RATIO.map((ratio, index) => (
+        <Button key={index} value={ratio} />
+      ))}
     </div>
   );
 }

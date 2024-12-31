@@ -9,6 +9,7 @@ import {
 } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { generateColorPalette, isValidHexColor } from "@/app/_lib/colors";
+import { POSSIBLE_CONTRAST_RATIO } from "@/app/_lib/contrastRatio";
 
 const SettingsContext = createContext();
 
@@ -37,6 +38,10 @@ export function SettingsProvider({ children }) {
 
   const updateRequiredContrastRatio = useCallback(
     (ratio) => {
+      if (!POSSIBLE_CONTRAST_RATIO.includes(ratio)) {
+        ratio = POSSIBLE_CONTRAST_RATIO[0];
+      }
+
       setRequiredContrastRatio(ratio);
 
       const params = new URLSearchParams(searchParams);
@@ -45,6 +50,12 @@ export function SettingsProvider({ children }) {
     },
     [searchParams, router, pathname]
   );
+
+  const resetContrastRatioParam = useCallback(() => {
+    const params = new URLSearchParams(searchParams);
+    params.set("ratio", POSSIBLE_CONTRAST_RATIO[0]);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  }, [searchParams, router, pathname]);
 
   useEffect(() => {
     const activeColor = searchParams.get("color");
@@ -57,10 +68,12 @@ export function SettingsProvider({ children }) {
   useEffect(() => {
     const activeRatio = searchParams.get("ratio");
 
-    if (activeRatio) {
+    if (activeRatio && POSSIBLE_CONTRAST_RATIO.includes(activeRatio)) {
       setRequiredContrastRatio(activeRatio);
+    } else {
+      resetContrastRatioParam();
     }
-  }, [searchParams]);
+  }, [searchParams, resetContrastRatioParam]);
 
   return (
     <SettingsContext.Provider
