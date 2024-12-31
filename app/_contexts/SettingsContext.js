@@ -36,6 +36,12 @@ export function SettingsProvider({ children }) {
     [searchParams, router, pathname],
   );
 
+  const removeColorParam = useCallback(() => {
+    const params = new URLSearchParams(searchParams);
+    params.delete("color");
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  }, [searchParams, router, pathname]);
+
   const updateRequiredContrastRatio = useCallback(
     (ratio) => {
       if (!POSSIBLE_CONTRAST_RATIO.includes(ratio)) {
@@ -62,8 +68,10 @@ export function SettingsProvider({ children }) {
 
     if (activeColor && isValidHexColor("#" + activeColor)) {
       updateBaseColor("#" + activeColor);
+    } else {
+      removeColorParam();
     }
-  }, [searchParams, updateBaseColor]);
+  }, [searchParams, updateBaseColor, removeColorParam]);
 
   useEffect(() => {
     const activeRatio = searchParams.get("ratio");
