@@ -1,3 +1,9 @@
+// Helper function to check if a color is a valid hex color
+export function isValidHexColor(hexColor) {
+  const hexPattern = /^#([0-9A-F]{3}|[0-9A-F]{4}|[0-9A-F]{6}|[0-9A-F]{8})$/i;
+  return hexPattern.test(hexColor);
+}
+
 export function generateColorPalette(hexColor) {
   const opacities = {
     0: 0,

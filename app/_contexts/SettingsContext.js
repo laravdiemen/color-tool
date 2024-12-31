@@ -8,7 +8,7 @@ import {
   useCallback,
 } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { generateColorPalette } from "@/app/_lib/colors";
+import { generateColorPalette, isValidHexColor } from "@/app/_lib/colors";
 
 const SettingsContext = createContext();
 
@@ -23,6 +23,8 @@ export function SettingsProvider({ children }) {
 
   const updateBaseColor = useCallback(
     (color) => {
+      if (!isValidHexColor(color)) return;
+
       setBaseColor(color);
       setColorPalette(generateColorPalette(color));
 

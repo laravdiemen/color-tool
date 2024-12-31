@@ -1,14 +1,21 @@
 "use client";
 
-import { useSettings } from "@/app/_contexts/SettingsContext";
 import { EyeDropperIcon } from "@heroicons/react/24/outline";
+import { useSettings } from "@/app/_contexts/SettingsContext";
+import { isValidHexColor } from "@/app/_lib/colors";
 
 export default function ColorInput() {
   const { baseColor, updateBaseColor } = useSettings();
 
   function handleColorInput(e) {
-    // TODO: Add check if the input is a valid hex color
-    updateBaseColor(e.target.value);
+    const input = e.target.value;
+
+    if (isValidHexColor(input)) {
+      updateBaseColor(e.target.value);
+    } else {
+      // TODO: Show error message
+      console.log("NOT VALID");
+    }
   }
 
   // TODO: Add a text input as well with validation for hex colors
