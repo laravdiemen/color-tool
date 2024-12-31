@@ -1,8 +1,6 @@
-import ColorContrast from "@/app/_components/ColorContrast";
+import ContrastRatioPalette from "@/app/_components/ContrastRatioPalette";
 import ColorInput from "@/app/_components/ColorInput";
-import ColorPalette from "@/app/_components/ColorPalette";
-import RequiredContrastRatio from "@/app/_components/RequiredContrastRatio";
-import Wrapper from "@/app/_ui/Wrapper";
+import TailwindColorPalette from "@/app/_components/TailwindColorPalette";
 import Heading from "@/app/_ui/Heading";
 
 export default function Page() {
@@ -10,27 +8,11 @@ export default function Page() {
     <>
       <Heading as="h1">Color Tool</Heading>
 
-      <Wrapper>
-        <div className="flex flex-wrap items-center gap-4">
-          <Heading as="h2">Add your base color:</Heading>
-          <ColorInput />
-        </div>
-      </Wrapper>
+      <ColorInput />
 
-      <Wrapper>
-        <Heading as="h2" className="mb-4">
-          Tailwind color palette
-        </Heading>
-        <ColorPalette />
-      </Wrapper>
+      <TailwindColorPalette />
 
-      <Wrapper>
-        <div className="mb-6 flex flex-wrap justify-between gap-4">
-          <Heading as="h2">Add your base color:</Heading>
-          <RequiredContrastRatio />
-        </div>
-        <ColorContrast />
-      </Wrapper>
+      <ContrastRatioPalette />
     </>
   );
 }

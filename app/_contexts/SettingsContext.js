@@ -78,7 +78,9 @@ export function SettingsProvider({ children }) {
 
     if (activeRatio && POSSIBLE_CONTRAST_RATIO.includes(activeRatio)) {
       setRequiredContrastRatio(activeRatio);
-    } else {
+    }
+
+    if (activeRatio && !POSSIBLE_CONTRAST_RATIO.includes(activeRatio)) {
       resetContrastRatioParam();
     }
   }, [searchParams, resetContrastRatioParam]);
