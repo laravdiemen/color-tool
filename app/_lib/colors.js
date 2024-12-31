@@ -1,6 +1,6 @@
 // Helper function to check if a color is a valid hex color
 export function isValidHexColor(hexColor) {
-  const hexPattern = /^#([0-9A-F]{3}|[0-9A-F]{4}|[0-9A-F]{6}|[0-9A-F]{8})$/i;
+  const hexPattern = /^#([0-9A-F]{3}|[0-9A-F]{6})$/i;
   return hexPattern.test(hexColor);
 }
 
@@ -47,6 +47,14 @@ export function getSingleColor(baseHexColor, hexColor) {
 // Helper function to remove the hash and parse hex color
 export function parseHexColor(hexColor) {
   hexColor = hexColor.replace(/^#/, "");
+
+  // Handle shorthand hex colors
+  if (hexColor.length === 3) {
+    hexColor = hexColor
+      .split("")
+      .map((char) => char + char)
+      .join("");
+  }
 
   return {
     red: parseInt(hexColor.substring(0, 2), 16),

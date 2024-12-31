@@ -49,7 +49,7 @@ export function SettingsProvider({ children }) {
   useEffect(() => {
     const activeColor = searchParams.get("color");
 
-    if (activeColor) {
+    if (activeColor && isValidHexColor("#" + activeColor)) {
       updateBaseColor("#" + activeColor);
     }
   }, [searchParams, updateBaseColor]);
