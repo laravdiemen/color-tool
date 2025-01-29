@@ -59,7 +59,7 @@ export default function ColorInput() {
               onChange={validateHexColorInput}
               maxLength={7}
               placeholder="RRGGBB"
-              className="rounded border border-slate-400 py-1.5 pl-5 pr-3"
+              className="rounded-sm border border-slate-400 py-1.5 pl-5 pr-3"
             />
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function ColorInput() {
           <label htmlFor="color-picker" className="sr-only">
             Color picker
           </label>
-          <div className="relative rounded border border-slate-400 px-3 py-2 transition hover:bg-slate-400">
+          <div className="relative rounded-sm border border-slate-400 px-3 py-2 transition hover:bg-slate-400">
             <EyeDropperIcon className="pointer-events-none size-4" />
             <input
               id="color-picker"

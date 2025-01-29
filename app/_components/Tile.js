@@ -32,7 +32,7 @@ function ColorSquare({ bgColor, textColor, colorToCopy, contrastRatio }) {
         backgroundColor: bgColor,
         color: textColor,
       }}
-      className="group relative flex size-20 items-center justify-center rounded max-sm:order-first"
+      className="group relative flex size-20 items-center justify-center rounded-sm max-sm:order-first"
     >
       {contrastRatio && (
         <>
