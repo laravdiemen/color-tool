@@ -10,3 +10,35 @@
     @slot;
   }
 }
+
+/* A11y: Add outline animation on focus */
+input[type="radio"]:focus + label,
+input[type="checkbox"]:focus + label,
+input:focus:not([type="radio"], [type="checkbox"]),
+textarea:focus,
+a:focus,
+button:focus,
+select:focus,
+area:focus,
+iframe:focus,
+details:focus {
+  outline-width: 0;
+  animation: focus 0.1s linear both;
+  outline-color: -webkit-focus-ring-color;
+  outline-style: auto;
+}
+
+@keyframes focus {
+  0% {
+    outline-offset: 16px;
+    outline-style: auto;
+    outline-width: 0;
+  }
+
+  100% {
+    z-index: 9999;
+    outline-offset: 4px;
+    outline-style: auto;
+    outline-width: 2px;
+  }
+}

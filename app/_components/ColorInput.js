@@ -67,7 +67,7 @@ export default function ColorInput() {
           <label htmlFor="color-picker" className="sr-only">
             Color picker
           </label>
-          <div className="relative rounded-sm border border-slate-400 px-3 py-2 transition hover:bg-slate-400">
+          <div className="hocus:bg-slate-400 relative rounded-sm border border-slate-400 px-3 py-2 transition-colors">
             <EyeDropperIcon className="pointer-events-none size-4" />
             <input
               id="color-picker"
