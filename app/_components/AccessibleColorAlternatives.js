@@ -32,7 +32,7 @@ export default function AccessibleColorAlternatives() {
           If you want {key} as a text color, try {accessibleColor.color} as your
           base color.
         </p>
-        <div className="my-6 flex gap-4">
+        <div className="my-6 flex flex-wrap gap-4">
           <Tile>
             <Tile.ColorSquare
               bgColor={colorPalette[500].color}

@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} bg-slate-50 font-sans text-slate-950 antialiased`}
+        className={`${roboto.variable} bg-slate-50 font-sans text-slate-950 antialiased dark:bg-slate-950 dark:text-slate-50`}
       >
         <main className="mx-auto grid max-w-7xl grid-cols-12 gap-4 px-4 py-6 *:col-span-12 md:py-8">
           <SettingsProvider>{children}</SettingsProvider>
