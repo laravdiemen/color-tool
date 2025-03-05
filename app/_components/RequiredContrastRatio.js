@@ -1,7 +1,7 @@
 "use client";
 
 import { useSettings } from "@/app/_contexts/SettingsContext";
-import { POSSIBLE_CONTRAST_RATIO } from "@/app/_lib/contrastRatio";
+import { POSSIBLE_CONTRAST_RATIO } from "@/app/_lib/constants";
 import Button from "@/app/_ui/Button";
 
 export default function RequiredContrastRatio() {

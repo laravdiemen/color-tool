@@ -13,7 +13,7 @@ import {
   generateAccessibleColors,
   isValidHexColor,
 } from "@/app/_lib/colors";
-import { POSSIBLE_CONTRAST_RATIO } from "@/app/_lib/contrastRatio";
+import { POSSIBLE_CONTRAST_RATIO } from "@/app/_lib/constants";
 
 const SettingsContext = createContext();
 
