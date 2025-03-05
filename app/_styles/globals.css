@@ -11,6 +11,20 @@
   }
 }
 
+/* A11y: Sometimes the input is invisble, so you want to use the parent to show for example the outline */
+@custom-variant has-input-focus {
+  &:has(input:focus) {
+    @slot;
+  }
+}
+
+@utility outline-animation {
+  outline-width: 0;
+  animation: focus 0.1s linear both;
+  outline-color: -webkit-focus-ring-color;
+  outline-style: auto;
+}
+
 /* A11y: Add outline animation on focus */
 input[type="radio"]:focus + label,
 input[type="checkbox"]:focus + label,
@@ -22,10 +36,7 @@ select:focus,
 area:focus,
 iframe:focus,
 details:focus {
-  outline-width: 0;
-  animation: focus 0.1s linear both;
-  outline-color: -webkit-focus-ring-color;
-  outline-style: auto;
+  @apply outline-animation;
 }
 
 @keyframes focus {
