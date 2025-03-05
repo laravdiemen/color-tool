@@ -20,9 +20,12 @@
 
 @utility outline-animation {
   outline-width: 0;
-  animation: focus 0.1s linear both;
-  outline-color: -webkit-focus-ring-color;
-  outline-style: auto;
+
+  .js-user-is-tabbing & {
+    animation: focus 0.1s linear both;
+    outline-color: -webkit-focus-ring-color;
+    outline-style: auto;
+  }
 }
 
 /* A11y: Add outline animation on focus */
