@@ -8,7 +8,11 @@ import {
   useCallback,
 } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { generateColorPalette, isValidHexColor } from "@/app/_lib/colors";
+import {
+  generateColorPalette,
+  generateAccessibleColors,
+  isValidHexColor,
+} from "@/app/_lib/colors";
 import { POSSIBLE_CONTRAST_RATIO } from "@/app/_lib/contrastRatio";
 
 const SettingsContext = createContext();
@@ -20,17 +24,20 @@ export function SettingsProvider({ children }) {
 
   const [baseColor, setBaseColor] = useState("");
   const [colorPalette, setColorPalette] = useState({});
+  const [accessibleColors, setAccessibleColors] = useState({});
   const [requiredContrastRatio, setRequiredContrastRatio] = useState("4.5");
 
   const updateBaseColor = useCallback(
-    (color) => {
+    (color, ratio) => {
       if (!isValidHexColor(color)) return;
 
       setBaseColor(color);
       setColorPalette(generateColorPalette(color));
+      setAccessibleColors(generateAccessibleColors(color, ratio));
 
       const params = new URLSearchParams(searchParams);
       params.set("color", color.substring(1));
+      params.set("ratio", ratio);
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     },
     [searchParams, router, pathname],
@@ -67,11 +74,11 @@ export function SettingsProvider({ children }) {
     const activeColor = searchParams.get("color");
 
     if (activeColor && isValidHexColor("#" + activeColor)) {
-      updateBaseColor("#" + activeColor);
+      updateBaseColor("#" + activeColor, requiredContrastRatio);
     } else {
       removeColorParam();
     }
-  }, [searchParams, updateBaseColor, removeColorParam]);
+  }, [requiredContrastRatio, searchParams, updateBaseColor, removeColorParam]);
 
   useEffect(() => {
     const activeRatio = searchParams.get("ratio");
@@ -91,6 +98,7 @@ export function SettingsProvider({ children }) {
         baseColor,
         updateBaseColor,
         colorPalette,
+        accessibleColors,
         requiredContrastRatio,
         updateRequiredContrastRatio,
       }}

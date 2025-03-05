@@ -3,3 +3,10 @@
 @theme {
   --font-sans: var(--font-roboto), sans-serif;
 }
+
+@custom-variant hocus {
+  &:hover,
+  &:focus {
+    @slot;
+  }
+}

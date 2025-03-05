@@ -14,7 +14,7 @@ export default function ContrastRatioPalette() {
   return (
     <Wrapper>
       <div className="mb-6 flex flex-wrap justify-between gap-4">
-        <Heading as="h2">Check contrast with your base color:</Heading>
+        <Heading as="h2">Check contrast with your base color</Heading>
         <RequiredContrastRatio />
       </div>
       <div className="flex flex-col flex-wrap gap-1 sm:flex-row sm:gap-y-8">

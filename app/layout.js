@@ -21,8 +21,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} bg-slate-50 font-sans antialiased`}>
-        <main className="mx-auto flex max-w-3xl flex-col gap-4 px-4 py-6 md:py-8 xl:max-w-7xl">
+      <body
+        className={`${roboto.variable} bg-slate-50 font-sans text-slate-950 antialiased`}
+      >
+        <main className="mx-auto grid max-w-7xl grid-cols-12 gap-4 px-4 py-6 *:col-span-12 md:py-8">
           <SettingsProvider>{children}</SettingsProvider>
 
           <Toaster

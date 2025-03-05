@@ -9,7 +9,7 @@ import Heading from "@/app/_ui/Heading";
 
 export default function ColorInput() {
   const [hexValue, setHexValue] = useState("");
-  const { baseColor, updateBaseColor } = useSettings();
+  const { baseColor, updateBaseColor, requiredContrastRatio } = useSettings();
 
   useEffect(() => {
     if (baseColor) {
@@ -28,7 +28,7 @@ export default function ColorInput() {
     setHexValue(input);
 
     if (isValidHexColor("#" + input)) {
-      updateBaseColor("#" + input);
+      updateBaseColor("#" + input, requiredContrastRatio);
     }
   }
 
@@ -36,7 +36,7 @@ export default function ColorInput() {
     const input = e.target.value;
 
     if (isValidHexColor(input)) {
-      updateBaseColor(e.target.value);
+      updateBaseColor(e.target.value, requiredContrastRatio);
     }
   }
 
@@ -50,7 +50,7 @@ export default function ColorInput() {
             Hex color
           </label>
           <div className="relative">
-            <span className="absolute left-2 top-1/2 -translate-y-1/2">#</span>
+            <span className="absolute top-1/2 left-2 -translate-y-1/2">#</span>
 
             <input
               id="hex-color-input"
@@ -59,7 +59,7 @@ export default function ColorInput() {
               onChange={validateHexColorInput}
               maxLength={7}
               placeholder="RRGGBB"
-              className="rounded-sm border border-slate-400 py-1.5 pl-5 pr-3"
+              className="rounded-sm border border-slate-400 py-1.5 pr-3 pl-5"
             />
           </div>
         </div>

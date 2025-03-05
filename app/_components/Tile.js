@@ -40,7 +40,7 @@ function ColorSquare({ bgColor, textColor, colorToCopy, contrastRatio }) {
         </>
       )}
       <button
-        className="absolute inset-0 flex items-center justify-center bg-inherit opacity-0 transition focus:opacity-100 group-hover:opacity-100"
+        className="absolute inset-0 flex cursor-pointer items-center justify-center rounded-sm bg-inherit opacity-0 transition group-hover:opacity-100 focus:opacity-100"
         onClick={copyColorToClipboard}
         title={`Copy ${colorToCopy} to clipboard`}
       >
