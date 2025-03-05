@@ -18,7 +18,7 @@ export default function AccessibleColorAlternatives() {
 
   return Object.entries(accessibleColors).map(([key, accessibleColor]) => {
     if (
-      parseFloat(colorPalette[accessibleColor.index].contrastRatioBaseColor) >
+      parseFloat(colorPalette[accessibleColor.index].contrastRatioBaseColor) >=
       requiredContrastRatio
     )
       return null;
@@ -32,7 +32,26 @@ export default function AccessibleColorAlternatives() {
           If you want {key} as a text color, try {accessibleColor.color} as your
           base color.
         </p>
-        <div className="my-6 flex">
+        <div className="my-6 flex gap-4">
+          <Tile>
+            <Tile.ColorSquare
+              bgColor={colorPalette[500].color}
+              textColor={colorPalette[accessibleColor.index].color}
+              colorToCopy={colorPalette[accessibleColor.index].color}
+              contrastRatio={
+                colorPalette[accessibleColor.index].contrastRatioBaseColor
+              }
+            />
+            <Tile.ColorLabel
+              color={colorPalette[accessibleColor.index].color}
+            />
+            <Tile.PassesContrastLabel
+              colorContrast={colorPalette[accessibleColor.index].color}
+              contrastRatio={
+                colorPalette[accessibleColor.index].contrastRatioBaseColor
+              }
+            />
+          </Tile>
           <Tile>
             <Tile.ColorSquare
               bgColor={accessibleColor.color}
