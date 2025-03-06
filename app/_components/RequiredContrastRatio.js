@@ -15,7 +15,7 @@ export default function RequiredContrastRatio() {
         <Button
           key={index}
           isActive={requiredContrastRatio === ratio}
-          handleClick={() => updateRequiredContrastRatio(ratio)}
+          onClick={() => updateRequiredContrastRatio(ratio)}
         >
           {ratio}:1
         </Button>

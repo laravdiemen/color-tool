@@ -67,7 +67,7 @@ export default function AccessibleColorAlternatives() {
           </Tile>
         </div>
         <Button
-          handleClick={() =>
+          onClick={() =>
             updateBaseColor(accessibleColor.color, requiredContrastRatio)
           }
         >
