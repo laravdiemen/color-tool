@@ -6,7 +6,6 @@ import * as focusTrap from "focus-trap";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Button from "@/app/_ui/Button";
 import Heading from "@/app/_ui/Heading";
-import Wrapper from "@/app/_ui/Wrapper";
 import { checkCanFocusTrap } from "@/app/_lib/focus-trap";
 
 export default function Modal({ heading, button, children }) {
@@ -40,21 +39,19 @@ export default function Modal({ heading, button, children }) {
       <dialog
         ref={ref}
         onCancel={focusTrapModal.deactivate}
-        className="m-auto w-full max-w-4xl scale-90 bg-transparent p-4 opacity-0 transition-all transition-discrete duration-300 backdrop:pointer-events-none backdrop:bg-slate-950/0 backdrop:transition-all backdrop:transition-discrete backdrop:duration-300 open:scale-100 open:opacity-100 open:backdrop:bg-slate-950/50 dark:open:backdrop:bg-slate-50/50 starting:open:scale-90 starting:open:opacity-0 starting:open:backdrop:bg-slate-950/0"
+        className="m-auto max-h-[calc(100%-4rem)] w-[calc(100%-2rem)] max-w-4xl scale-90 rounded-lg bg-slate-200 p-4 text-slate-950 opacity-0 transition-all transition-discrete duration-300 backdrop:pointer-events-none backdrop:bg-slate-950/0 backdrop:transition-all backdrop:transition-discrete backdrop:duration-300 *:first:mt-0 *:last:mb-0 open:scale-100 open:opacity-100 open:backdrop:bg-slate-950/50 md:max-h-[calc(100%-10rem)] md:rounded-2xl md:p-6 dark:bg-slate-900 dark:text-slate-50 dark:open:backdrop:bg-slate-50/50 starting:open:scale-90 starting:open:opacity-0 starting:open:backdrop:bg-slate-950/0"
       >
-        <Wrapper>
-          <div className="mb-3 flex items-start justify-between gap-2">
-            <Heading as="h2">{heading}</Heading>
-            <Button onClick={focusTrapModal.deactivate} className="!p-2">
-              <XMarkIcon
-                className="pointer-events-none size-5"
-                aria-hidden="true"
-              />
-              <span className="sr-only">Close</span>
-            </Button>
-          </div>
-          {children}
-        </Wrapper>
+        <div className="mb-3 flex items-start justify-between gap-2">
+          <Heading as="h2">{heading}</Heading>
+          <Button onClick={focusTrapModal.deactivate} className="!p-2">
+            <XMarkIcon
+              className="pointer-events-none size-5"
+              aria-hidden="true"
+            />
+            <span className="sr-only">Close</span>
+          </Button>
+        </div>
+        {children}
       </dialog>
     </>
   );
