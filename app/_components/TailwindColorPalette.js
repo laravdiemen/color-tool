@@ -1,6 +1,7 @@
 "use client";
 
 import { useSettings } from "@/app/_contexts/SettingsContext";
+import TailwindConfigModal from "@/app/_components/TailwindConfigModal";
 import Tile from "@/app/_components/Tile";
 import Wrapper from "@/app/_ui/Wrapper";
 import Heading from "@/app/_ui/Heading";
@@ -12,10 +13,10 @@ export default function TailwindColorPalette() {
 
   return (
     <Wrapper>
-      <Heading as="h2" className="mb-4">
-        Tailwind color palette
-      </Heading>
-      {/* TODO: Add a button to copy a tailwind config (v3 or v4) */}
+      <div className="mb-6 flex flex-wrap justify-between gap-4">
+        <Heading as="h2">Tailwind color palette</Heading>
+        <TailwindConfigModal />
+      </div>
       <div className="flex flex-col flex-wrap gap-1 sm:flex-row sm:gap-y-8">
         {Object.entries(colorPalette).map(([key, value]) => (
           <Tile key={key}>
