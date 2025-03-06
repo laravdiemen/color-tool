@@ -7,7 +7,7 @@ const defaultClasses = {
   h6: "text-base font-medium",
 };
 
-export default function Heading({ as, className, children }) {
+export default function Heading({ as, className = "", children }) {
   const HeadingTag = as;
   const defaultClass = defaultClasses[HeadingTag] || "";
 

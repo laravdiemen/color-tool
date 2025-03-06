@@ -1,5 +1,5 @@
 export default function Button({
-  className,
+  className = "",
   isActive = false,
   onClick,
   children,

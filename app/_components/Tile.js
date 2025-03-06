@@ -22,8 +22,12 @@ function NumberLabel({ number }) {
 
 function ColorSquare({ bgColor, textColor, colorToCopy, contrastRatio }) {
   function copyColorToClipboard() {
-    navigator.clipboard.writeText(colorToCopy);
-    toast.success(colorToCopy + " is copied to clipboard");
+    try {
+      navigator.clipboard.writeText(colorToCopy);
+      toast.success(colorToCopy + " is copied to clipboard");
+    } catch (error) {
+      toast.error("Failed to copy " + colorToCopy + " to clipboard");
+    }
   }
 
   return (
