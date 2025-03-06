@@ -4,6 +4,9 @@
   --font-sans: var(--font-roboto), sans-serif;
 }
 
+/* TODO: Add toggle for dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @custom-variant hocus {
   &:hover,
   &:focus {
