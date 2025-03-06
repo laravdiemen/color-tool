@@ -2,49 +2,77 @@
 
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 import { useSettings } from "@/app/_contexts/SettingsContext";
 import Modal from "@/app/_components/Modal";
-import Button from "@/app/_ui/Button";
+import Heading from "@/app/_ui/Heading";
+import CopyCode from "@/app/_ui/CopyCode";
 
 export default function TailwindConfigModal() {
-  const [tailwindConfig, setTailwindConfig] = useState();
+  const [tailwindConfigV3, setTailwindConfigV3] = useState();
+  const [tailwindConfigV4, setTailwindConfigV4] = useState();
   const { colorPalette } = useSettings();
 
   useEffect(() => {
-    let config = Object.entries(colorPalette).reduce((acc, [key, value]) => {
-      if (key === "0" || key === "1000") return acc;
+    setTailwindConfigV3(generateTailwindConfigV3());
+    setTailwindConfigV4(generateTailwindConfigV4());
+  }, [colorPalette]);
 
-      return (acc += `--color-primary-${key}: ${value.color};\n`);
-    }, "");
+  function generateTailwindConfigV3() {
+    let config = `primary: {\n\tDEFAULT: '${colorPalette[500].color}',\n`;
+
+    Object.entries(colorPalette).forEach(([key, value]) => {
+      if (key === "0" || key === "1000") return;
+
+      config += `\t${key}: '${value.color}',\n`;
+    });
+
+    config += "}";
+
+    return config;
+  }
+
+  function generateTailwindConfigV4() {
+    let config = "";
+
+    Object.entries(colorPalette).forEach(([key, value]) => {
+      if (key === "0" || key === "1000") return;
+
+      config += `--color-primary-${key}: ${value.color};\n`;
+    });
 
     config += "--color-primary: var(--color-primary-500);";
 
-    setTailwindConfig(config);
-  }, [colorPalette]);
+    return config;
+  }
 
-  function copyTailwindConfigToClipboard() {
+  function copyTailwindConfigToClipboard(config, version) {
     try {
-      navigator.clipboard.writeText(tailwindConfig);
-      toast.success("Tailwind v4 config is copied to clipboard");
+      navigator.clipboard.writeText(config);
+      toast.success(`Tailwind ${version} config is copied to clipboard`);
     } catch (error) {
-      toast.error("Failed to copy Tailwind v4 config to clipboard");
+      toast.error(`Failed to copy Tailwind ${version} config to clipboard`);
     }
   }
 
   return (
-    <Modal heading="Get Tailwind v4 config" button="Get config">
-      <div className="relative rounded bg-slate-300 p-4 pr-15 dark:bg-slate-800">
-        <Button
-          className="absolute top-2 right-2 !border-transparent !p-2"
-          onClick={copyTailwindConfigToClipboard}
-        >
-          <DocumentDuplicateIcon className="size-5" />
-          <span className="sr-only">Copy tailwind v4 config</span>
-        </Button>
+    <Modal heading="Get Tailwind config" button="Get config">
+      <Heading as="h3" className="mb-4">
+        Tailwind v4 config
+      </Heading>
+      <CopyCode
+        handleCopy={() => copyTailwindConfigToClipboard(tailwindConfigV4, "v4")}
+        button="Copy tailwind v4 config"
+        code={tailwindConfigV4}
+      />
 
-        <code className="whitespace-pre-line">{tailwindConfig}</code>
-      </div>
+      <Heading as="h3" className="mb-4">
+        Tailwind v3 config
+      </Heading>
+      <CopyCode
+        handleCopy={() => copyTailwindConfigToClipboard(tailwindConfigV3, "v3")}
+        button="Copy tailwind v3 config"
+        code={tailwindConfigV3}
+      />
     </Modal>
   );
 }
