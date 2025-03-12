@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import { Roboto } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-import { SettingsProvider } from "@/app/_contexts/SettingsContext";
 import "@/app/_styles/globals.css";
 
 const roboto = Roboto({
@@ -23,9 +22,7 @@ export default function RootLayout({ children }) {
         className={`${roboto.variable} bg-slate-50 font-sans text-slate-950 antialiased dark:bg-slate-950 dark:text-slate-50`}
       >
         <main className="mx-auto grid max-w-7xl grid-cols-12 gap-4 px-4 py-6 *:col-span-12 md:py-8">
-          <Suspense>
-            <SettingsProvider>{children}</SettingsProvider>
-          </Suspense>
+          <Suspense>{children}</Suspense>
 
           <Toaster
             position="top-right"

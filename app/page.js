@@ -5,6 +5,7 @@ import AccessibleColorAlternatives from "@/app/_components/AccessibleColorAltern
 import ContrastRatioPalette from "@/app/_components/ContrastRatioPalette";
 import ColorInput from "@/app/_components/ColorInput";
 import TailwindColorPalette from "@/app/_components/TailwindColorPalette";
+import { SettingsProvider } from "@/app/_contexts/SettingsContext";
 import Heading from "@/app/_ui/Heading";
 import { BODY_CLASS_TABBING } from "@/app/_lib/constants";
 
@@ -29,7 +30,7 @@ export default function Page() {
   }, []);
 
   return (
-    <>
+    <SettingsProvider>
       <Heading as="h1">Color Tool</Heading>
 
       <ColorInput />
@@ -39,6 +40,6 @@ export default function Page() {
       <ContrastRatioPalette />
 
       <AccessibleColorAlternatives />
-    </>
+    </SettingsProvider>
   );
 }
