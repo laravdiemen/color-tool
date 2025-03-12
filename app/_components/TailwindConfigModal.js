@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useCallback, useState } from "react";
 import toast from "react-hot-toast";
 import { useSettings } from "@/app/_contexts/SettingsContext";
 import Modal from "@/app/_components/Modal";
@@ -13,37 +13,37 @@ export default function TailwindConfigModal() {
   const { colorPalette } = useSettings();
 
   useEffect(() => {
+    function generateTailwindConfigV3() {
+      let config = `primary: {\n\tDEFAULT: '${colorPalette[500].color}',\n`;
+
+      Object.entries(colorPalette).forEach(([key, value]) => {
+        if (key === "0" || key === "1000") return;
+
+        config += `\t${key}: '${value.color}',\n`;
+      });
+
+      config += "}";
+
+      return config;
+    }
+
+    function generateTailwindConfigV4() {
+      let config = "";
+
+      Object.entries(colorPalette).forEach(([key, value]) => {
+        if (key === "0" || key === "1000") return;
+
+        config += `--color-primary-${key}: ${value.color};\n`;
+      });
+
+      config += "--color-primary: var(--color-primary-500);";
+
+      return config;
+    }
+
     setTailwindConfigV3(generateTailwindConfigV3());
     setTailwindConfigV4(generateTailwindConfigV4());
   }, [colorPalette]);
-
-  function generateTailwindConfigV3() {
-    let config = `primary: {\n\tDEFAULT: '${colorPalette[500].color}',\n`;
-
-    Object.entries(colorPalette).forEach(([key, value]) => {
-      if (key === "0" || key === "1000") return;
-
-      config += `\t${key}: '${value.color}',\n`;
-    });
-
-    config += "}";
-
-    return config;
-  }
-
-  function generateTailwindConfigV4() {
-    let config = "";
-
-    Object.entries(colorPalette).forEach(([key, value]) => {
-      if (key === "0" || key === "1000") return;
-
-      config += `--color-primary-${key}: ${value.color};\n`;
-    });
-
-    config += "--color-primary: var(--color-primary-500);";
-
-    return config;
-  }
 
   function copyTailwindConfigToClipboard(config, version) {
     try {
