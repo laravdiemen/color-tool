@@ -21,6 +21,12 @@ function NumberLabel({ number }) {
 }
 
 function ColorSquare({ bgColor, textColor, colorToCopy, contrastRatio }) {
+  const { requiredContrastRatio } = useSettings();
+
+  const passesContrast = contrastRatio
+    ? parseFloat(contrastRatio) >= parseFloat(requiredContrastRatio)
+    : null;
+
   function copyColorToClipboard() {
     try {
       navigator.clipboard.writeText(colorToCopy);
@@ -38,10 +44,8 @@ function ColorSquare({ bgColor, textColor, colorToCopy, contrastRatio }) {
       }}
       className="group relative flex size-20 items-center justify-center rounded-sm max-sm:order-first"
     >
-      {contrastRatio && (
-        <>
-          <span className="font-bold">{contrastRatio}</span>:1
-        </>
+      {passesContrast !== null && (
+        <span>{passesContrast ? "Pass" : "Fail"}</span>
       )}
       <button
         className="absolute inset-0 flex cursor-pointer items-center justify-center rounded-sm bg-inherit opacity-0 transition group-hover:opacity-100 focus:opacity-100"
@@ -66,28 +70,31 @@ function PassesContrastLabel({ colorContrast, contrastRatio }) {
     parseFloat(contrastRatio) >= parseFloat(requiredContrastRatio);
 
   return (
-    <div
-      className={`${
-        passesContrast ? "bg-green-700 text-white" : "bg-red-600 text-white"
-      } flex size-8 items-center justify-center rounded-full max-sm:ml-auto`}
-    >
-      {passesContrast ? (
-        <>
-          <CheckIcon className="size-4" />
-          <span className="sr-only">
-            {colorContrast} has sufficient contrast with {baseColor} to meet the
-            required ratio of {requiredContrastRatio}:1
-          </span>
-        </>
-      ) : (
-        <>
-          <XMarkIcon className="size-4" />
-          <span className="sr-only">
-            {colorContrast} has not sufficient contrast with {baseColor} to meet
-            the required ratio of {requiredContrastRatio}:1
-          </span>
-        </>
-      )}
+    <div className="flex flex-col items-center gap-2 max-sm:ml-auto">
+      <div
+        className={`${
+          passesContrast ? "bg-green-700 text-white" : "bg-red-600 text-white"
+        } flex size-8 items-center justify-center rounded-full`}
+      >
+        {passesContrast ? (
+          <>
+            <CheckIcon className="size-4" />
+            <span className="sr-only">
+              {colorContrast} has sufficient contrast with {baseColor} to meet
+              the required ratio of {requiredContrastRatio}:1
+            </span>
+          </>
+        ) : (
+          <>
+            <XMarkIcon className="size-4" />
+            <span className="sr-only">
+              {colorContrast} has not sufficient contrast with {baseColor} to
+              meet the required ratio of {requiredContrastRatio}:1
+            </span>
+          </>
+        )}
+      </div>
+      <div className="text-sm font-bold">{contrastRatio}:1</div>
     </div>
   );
 }
