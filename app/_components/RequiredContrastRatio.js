@@ -17,7 +17,7 @@ export default function RequiredContrastRatio() {
           isActive={requiredContrastRatio === ratio}
           onClick={() => updateRequiredContrastRatio(ratio)}
         >
-          {ratio}:1
+          {`${ratio}:1`}
         </Button>
       ))}
     </div>

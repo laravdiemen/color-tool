@@ -29,8 +29,8 @@ export default function AccessibleColorAlternatives() {
           Accessible alternative
         </Heading>
         <p className="mb-6">
-          If you want {key} as a text color, try {accessibleColor.color} as your
-          base color.
+          {`If you want ${key} as a text color, try ${accessibleColor.color} as your
+          base color.`}
         </p>
         <div className="my-6 flex flex-wrap gap-4">
           <Tile>
@@ -71,7 +71,7 @@ export default function AccessibleColorAlternatives() {
             updateBaseColor(accessibleColor.color, requiredContrastRatio)
           }
         >
-          Use {accessibleColor.color} as base color
+          {`Use ${accessibleColor.color} as base color`}
         </Button>
       </Wrapper>
     );

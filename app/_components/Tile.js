@@ -53,7 +53,7 @@ function ColorSquare({ bgColor, textColor, colorToCopy, contrastRatio }) {
         title={`Copy ${colorToCopy} to clipboard`}
       >
         <DocumentDuplicateIcon className="size-6" />
-        <span className="sr-only">Copy {colorToCopy} to clipboard</span>
+        <span className="sr-only">{`Copy ${colorToCopy} to clipboard`}</span>
       </button>
     </div>
   );
@@ -80,21 +80,21 @@ function PassesContrastLabel({ colorContrast, contrastRatio }) {
           <>
             <CheckIcon className="size-4" />
             <span className="sr-only">
-              {colorContrast} has sufficient contrast with {baseColor} to meet
-              the required ratio of {requiredContrastRatio}:1
+              {`${colorContrast} has sufficient contrast with ${baseColor} to meet
+              the required ratio of ${requiredContrastRatio}:1`}
             </span>
           </>
         ) : (
           <>
             <XMarkIcon className="size-4" />
             <span className="sr-only">
-              {colorContrast} has not sufficient contrast with {baseColor} to
-              meet the required ratio of {requiredContrastRatio}:1
+              {`${colorContrast} has not sufficient contrast with ${baseColor} to
+              meet the required ratio of ${requiredContrastRatio}:1`}
             </span>
           </>
         )}
       </div>
-      <div className="text-sm font-bold">{contrastRatio}:1</div>
+      <div className="text-sm font-bold">{`${contrastRatio}:1`}</div>
     </div>
   );
 }
