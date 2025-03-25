@@ -37,14 +37,12 @@ export default function AccessibleColorAlternatives() {
             <Tile.ColorSquare
               bgColor={colorPalette[500].color}
               textColor={colorPalette[accessibleColor.index].color}
-              colorToCopy={colorPalette[accessibleColor.index].color}
+              colorToCopy={colorPalette[500].color}
               contrastRatio={
                 colorPalette[accessibleColor.index].contrastRatioBaseColor
               }
             />
-            <Tile.ColorLabel
-              color={colorPalette[accessibleColor.index].color}
-            />
+            <Tile.ColorLabel color={colorPalette[500].color} />
             <Tile.PassesContrastLabel
               colorContrast={colorPalette[accessibleColor.index].color}
               contrastRatio={
@@ -55,7 +53,7 @@ export default function AccessibleColorAlternatives() {
           <Tile>
             <Tile.ColorSquare
               bgColor={accessibleColor.color}
-              textColor={accessibleColor.contrast45}
+              textColor={colorPalette[accessibleColor.index].color}
               colorToCopy={accessibleColor.color}
               contrastRatio={accessibleColor.contrastRatioBaseColor}
             />
