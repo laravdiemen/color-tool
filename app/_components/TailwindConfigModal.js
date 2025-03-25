@@ -30,13 +30,13 @@ export default function TailwindConfigModal() {
     function generateTailwindConfigV4() {
       let config = "";
 
+      config += "--color-primary: var(--color-primary-500);\n";
+
       Object.entries(colorPalette).forEach(([key, value]) => {
         if (key === "0" || key === "1000") return;
 
         config += `--color-primary-${key}: ${value.color};\n`;
       });
-
-      config += "--color-primary: var(--color-primary-500);";
 
       return config;
     }
