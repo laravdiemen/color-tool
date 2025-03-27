@@ -55,24 +55,31 @@ export default function TailwindConfigModal() {
   }
 
   return (
-    <Modal heading="Get Tailwind config" button="Get config">
-      <Heading as="h3" className="mb-4">
-        Tailwind v4 config
-      </Heading>
-      <CopyCode
-        handleCopy={() => copyTailwindConfigToClipboard(tailwindConfigV4, "v4")}
-        button="Copy tailwind v4 config"
-        code={tailwindConfigV4}
-      />
+    <Modal>
+      <Modal.ModalStyledButton>Get config</Modal.ModalStyledButton>
+      <Modal.ModalDialog title="Get Tailwind config">
+        <Heading as="h3" className="mb-4">
+          Tailwind v4 config
+        </Heading>
+        <CopyCode
+          handleCopy={() =>
+            copyTailwindConfigToClipboard(tailwindConfigV4, "v4")
+          }
+          button="Copy tailwind v4 config"
+          code={tailwindConfigV4}
+        />
 
-      <Heading as="h3" className="mb-4">
-        Tailwind v3 config
-      </Heading>
-      <CopyCode
-        handleCopy={() => copyTailwindConfigToClipboard(tailwindConfigV3, "v3")}
-        button="Copy tailwind v3 config"
-        code={tailwindConfigV3}
-      />
+        <Heading as="h3" className="mb-4">
+          Tailwind v3 config
+        </Heading>
+        <CopyCode
+          handleCopy={() =>
+            copyTailwindConfigToClipboard(tailwindConfigV3, "v3")
+          }
+          button="Copy tailwind v3 config"
+          code={tailwindConfigV3}
+        />
+      </Modal.ModalDialog>
     </Modal>
   );
 }

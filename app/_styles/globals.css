@@ -16,6 +16,10 @@
   a {
     @apply underline;
   }
+
+  button {
+    @apply cursor-pointer;
+  }
 }
 
 /* TODO: Add toggle for dark mode */
