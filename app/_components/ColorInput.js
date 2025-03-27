@@ -67,7 +67,7 @@ export default function ColorInput() {
           <label htmlFor="color-picker" className="sr-only">
             Color picker
           </label>
-          <div className="test hocus:bg-slate-400 dark:hocus:bg-slate-50 dark:hocus:text-slate-950 has-input-focus:outline-animation relative rounded-sm border border-slate-400 p-2.5 transition-colors dark:border-slate-50">
+          <div className="hocus:bg-slate-400 dark:hocus:bg-slate-50 dark:hocus:text-slate-950 has-input-focus:outline-animation relative rounded-sm border border-slate-400 p-2.5 transition-colors dark:border-slate-50">
             <EyeDropperIcon className="pointer-events-none size-4" />
             <input
               id="color-picker"
