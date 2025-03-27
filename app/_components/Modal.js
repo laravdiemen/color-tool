@@ -41,16 +41,14 @@ export default function Modal({ children }) {
   );
 }
 
-function ModalButton({ children }) {
+function ModalButton({ children, className }) {
   const { focusTrapModal } = useContext(ModalContext);
 
-  return <button onClick={focusTrapModal.activate}>{children}</button>;
-}
-
-function ModalStyledButton({ children }) {
-  const { focusTrapModal } = useContext(ModalContext);
-
-  return <Button onClick={focusTrapModal.activate}>{children}</Button>;
+  return (
+    <Button className={className} onClick={focusTrapModal.activate}>
+      {children}
+    </Button>
+  );
 }
 
 function ModalDialog({ title, children }) {
@@ -77,6 +75,5 @@ function ModalDialog({ title, children }) {
   );
 }
 
-Modal.ModalStyledButton = ModalStyledButton;
 Modal.ModalButton = ModalButton;
 Modal.ModalDialog = ModalDialog;

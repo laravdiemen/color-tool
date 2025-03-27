@@ -56,7 +56,7 @@ export default function TailwindConfigModal() {
 
   return (
     <Modal>
-      <Modal.ModalStyledButton>Get config</Modal.ModalStyledButton>
+      <Modal.ModalButton>Get config</Modal.ModalButton>
       <Modal.ModalDialog title="Get Tailwind config">
         <Heading as="h3" className="mb-4">
           Tailwind v4 config
