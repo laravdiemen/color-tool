@@ -6,6 +6,7 @@ export default function AccessibilityInfoModal() {
     <Modal>
       <Modal.ModalButton className="border-transparent !px-2">
         <InformationCircleIcon className="pointer-events-none size-6" />
+        <span className="sr-only">Contrast ratio explanation</span>
       </Modal.ModalButton>
 
       <Modal.ModalDialog title="Contrast ratio explanation">
