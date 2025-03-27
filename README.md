@@ -18,10 +18,18 @@ The Color Tool is a powerful Next.js project that enables you to create Tailwind
 
 3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 🚀 Building the Project
+## 🛠️ Building the Project
 
 To build the project for production:
 
 ```sh
 npm run build
+```
+
+## 🚀 Deploy
+
+To deploy the project to github pages:
+
+```sh
+npm run deploy
 ```
