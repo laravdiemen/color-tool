@@ -8,9 +8,9 @@ export default function AccessibilityInfoModal() {
         <InformationCircleIcon className="hocus:text-slate-600 dark:hocus:text-slate-300 size-6" />
       </Modal.ModalButton>
 
-      <Modal.ModalDialog title="Required contrast ratio explanation">
+      <Modal.ModalDialog title="Contrast ratio explanation">
         <p>
-          For WCAG 2.1 AA contrast ratio you have{" "}
+          WCAG 2.1 AA compliance requires{" "}
           <a
             href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html"
             target="_blank"
@@ -18,7 +18,7 @@ export default function AccessibilityInfoModal() {
             Success Criterion 1.4.3 Contrast (Minimum)
             <span className="sr-only"> (opens in new tab)</span>
           </a>{" "}
-          and for WCAG 2.1 AAA you have{" "}
+          while WCAG 2.1 AAA compliance requires{" "}
           <a
             href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-enhanced.html"
             target="_blank"
