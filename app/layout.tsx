@@ -1,6 +1,9 @@
-import { Suspense } from "react";
+// External dependencies
+import { type ReactNode, Suspense } from "react";
 import { Roboto } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+
+// Internal dependencies
 import "@/app/_styles/globals.css";
 
 const roboto = Roboto({
@@ -15,7 +18,11 @@ export const metadata = {
   description: "Generated colors for your next project",
 };
 
-export default function RootLayout({ children }) {
+type RootLayoutProps = {
+  children: ReactNode;
+};
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body

@@ -1,5 +1,6 @@
 "use client";
 
+// Internal dependencies
 import { useSettings } from "@/app/_contexts/SettingsContext";
 import Tile from "@/app/_components/Tile";
 import Wrapper from "@/app/_ui/Wrapper";
@@ -18,7 +19,7 @@ export default function AccessibleColorAlternatives() {
 
   return Object.entries(accessibleColors).map(([key, accessibleColor]) => {
     if (
-      parseFloat(colorPalette[accessibleColor.index].contrastRatioBaseColor) >=
+      colorPalette[accessibleColor.index].contrastRatioBaseColor >=
       requiredContrastRatio
     )
       return null;

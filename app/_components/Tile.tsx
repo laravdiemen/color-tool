@@ -1,14 +1,42 @@
 "use client";
 
+// External dependencies
+import { type ReactNode } from "react";
 import {
   CheckIcon,
   DocumentDuplicateIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
+
+// Internal dependencies
 import { useSettings } from "@/app/_contexts/SettingsContext";
 
-export default function Tile({ children }) {
+type TileProps = {
+  children: ReactNode;
+};
+
+type NumberLabelProps = {
+  number: string;
+};
+
+type ColorSquareProps = {
+  bgColor: string;
+  textColor: string;
+  colorToCopy: string;
+  contrastRatio?: number;
+};
+
+type ColorLabelProps = {
+  color: string;
+};
+
+type PassesContrastLabelProps = {
+  colorContrast: string;
+  contrastRatio: number;
+};
+
+export default function Tile({ children }: TileProps) {
   return (
     <div className="flex flex-row items-center gap-x-4 gap-y-2 max-sm:w-full sm:flex-col">
       {children}
@@ -16,22 +44,27 @@ export default function Tile({ children }) {
   );
 }
 
-function NumberLabel({ number }) {
+function NumberLabel({ number }: NumberLabelProps) {
   return <div className="text-sm max-sm:min-w-8">{number}</div>;
 }
 
-function ColorSquare({ bgColor, textColor, colorToCopy, contrastRatio }) {
+function ColorSquare({
+  bgColor,
+  textColor,
+  colorToCopy,
+  contrastRatio,
+}: ColorSquareProps) {
   const { requiredContrastRatio } = useSettings();
 
   const passesContrast = contrastRatio
-    ? parseFloat(contrastRatio) >= parseFloat(requiredContrastRatio)
+    ? contrastRatio >= requiredContrastRatio
     : null;
 
   function copyColorToClipboard() {
     try {
       navigator.clipboard.writeText(colorToCopy);
       toast.success(colorToCopy + " is copied to clipboard");
-    } catch (error) {
+    } catch {
       toast.error("Failed to copy " + colorToCopy + " to clipboard");
     }
   }
@@ -59,15 +92,17 @@ function ColorSquare({ bgColor, textColor, colorToCopy, contrastRatio }) {
   );
 }
 
-function ColorLabel({ color }) {
+function ColorLabel({ color }: ColorLabelProps) {
   return <div className="max-sm:font-bold sm:text-xs">{color}</div>;
 }
 
-function PassesContrastLabel({ colorContrast, contrastRatio }) {
+function PassesContrastLabel({
+  colorContrast,
+  contrastRatio,
+}: PassesContrastLabelProps) {
   const { baseColor, requiredContrastRatio } = useSettings();
 
-  const passesContrast =
-    parseFloat(contrastRatio) >= parseFloat(requiredContrastRatio);
+  const passesContrast = contrastRatio >= requiredContrastRatio;
 
   return (
     <div className="flex flex-col items-center gap-2 max-sm:ml-auto">

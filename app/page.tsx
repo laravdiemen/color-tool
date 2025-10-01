@@ -1,6 +1,9 @@
 "use client";
 
+// External dependencies
 import { useEffect } from "react";
+
+// Internal dependencies
 import AccessibleColorAlternatives from "@/app/_components/AccessibleColorAlternatives";
 import ContrastRatioPalette from "@/app/_components/ContrastRatioPalette";
 import ColorInput from "@/app/_components/ColorInput";
@@ -11,7 +14,7 @@ import { BODY_CLASS_TABBING } from "@/app/_lib/constants";
 
 export default function Page() {
   useEffect(() => {
-    const handleTab = (e) => {
+    const handleTab = (e: KeyboardEvent) => {
       if (e.key !== "Tab") return;
       document.body.classList.add(BODY_CLASS_TABBING);
     };

@@ -1,15 +1,18 @@
 "use client";
 
-import { useEffect, useCallback, useState } from "react";
+// External dependencies
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+
+// Internal dependencies
 import { useSettings } from "@/app/_contexts/SettingsContext";
 import Modal from "@/app/_components/Modal";
 import Heading from "@/app/_ui/Heading";
 import CopyCode from "@/app/_ui/CopyCode";
 
 export default function TailwindConfigModal() {
-  const [tailwindConfigV3, setTailwindConfigV3] = useState();
-  const [tailwindConfigV4, setTailwindConfigV4] = useState();
+  const [tailwindConfigV3, setTailwindConfigV3] = useState("");
+  const [tailwindConfigV4, setTailwindConfigV4] = useState("");
   const { colorPalette } = useSettings();
 
   useEffect(() => {
@@ -45,11 +48,11 @@ export default function TailwindConfigModal() {
     setTailwindConfigV4(generateTailwindConfigV4());
   }, [colorPalette]);
 
-  function copyTailwindConfigToClipboard(config, version) {
+  function copyTailwindConfigToClipboard(config: string, version: string) {
     try {
       navigator.clipboard.writeText(config);
       toast.success(`Tailwind ${version} config is copied to clipboard`);
-    } catch (error) {
+    } catch {
       toast.error(`Failed to copy Tailwind ${version} config to clipboard`);
     }
   }

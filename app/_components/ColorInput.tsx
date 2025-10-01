@@ -1,9 +1,12 @@
 "use client";
 
+// External dependencies
+import { useEffect, useState, type ChangeEvent } from "react";
 import { EyeDropperIcon } from "@heroicons/react/24/outline";
+
+// Internal dependencies
 import { useSettings } from "@/app/_contexts/SettingsContext";
 import { isValidHexColor } from "@/app/_lib/colors";
-import { useEffect, useState } from "react";
 import Wrapper from "@/app/_ui/Wrapper";
 import Heading from "@/app/_ui/Heading";
 
@@ -17,7 +20,7 @@ export default function ColorInput() {
     }
   }, [baseColor]);
 
-  function validateHexColorInput(e) {
+  function validateHexColorInput(e: ChangeEvent<HTMLInputElement>) {
     let input = e.target.value;
     input = input.replace(/[^a-zA-Z0-9]/g, "");
 
@@ -32,7 +35,7 @@ export default function ColorInput() {
     }
   }
 
-  function handleColorInput(e) {
+  function handleColorInput(e: ChangeEvent<HTMLInputElement>) {
     const input = e.target.value;
 
     if (isValidHexColor(input)) {
