@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import AccessibleColorAlternatives from "@/app/_components/AccessibleColorAlternatives";
 import ContrastRatioPalette from "@/app/_components/ContrastRatioPalette";
 import ColorInput from "@/app/_components/ColorInput";
+import GenerateShade from "@/app/_components/GenerateShade";
 import TailwindColorPalette from "@/app/_components/TailwindColorPalette";
 import { SettingsProvider } from "@/app/_contexts/SettingsContext";
 import Heading from "@/app/_ui/Heading";
@@ -39,6 +40,10 @@ export default function Page() {
       <ColorInput />
 
       <TailwindColorPalette />
+
+      <GenerateShade background={255} />
+
+      <GenerateShade background={0} />
 
       <ContrastRatioPalette />
 
