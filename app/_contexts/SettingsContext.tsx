@@ -55,7 +55,7 @@ const defaultSettings: SettingsContextValue = {
       contrastRatioBaseColor: 0,
     },
   },
-  requiredContrastRatio: 4.5,
+  requiredContrastRatio: POSSIBLE_CONTRAST_RATIO[1],
   updateRequiredContrastRatio: () => {},
 };
 
@@ -101,7 +101,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   const updateRequiredContrastRatio = useCallback(
     (ratio: ContrastRatio) => {
       if (!POSSIBLE_CONTRAST_RATIO.includes(ratio)) {
-        ratio = POSSIBLE_CONTRAST_RATIO[0];
+        ratio = POSSIBLE_CONTRAST_RATIO[1];
       }
 
       setRequiredContrastRatio(ratio);
@@ -115,7 +115,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
 
   const resetContrastRatioParam = useCallback(() => {
     const params = new URLSearchParams(searchParams);
-    params.set("ratio", POSSIBLE_CONTRAST_RATIO[0].toString());
+    params.set("ratio", POSSIBLE_CONTRAST_RATIO[1].toString());
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   }, [searchParams, router, pathname]);
 
