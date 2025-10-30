@@ -5,8 +5,8 @@ import { useEffect } from "react";
 
 // Internal dependencies
 import AccessibleColorAlternatives from "@/app/_components/AccessibleColorAlternatives";
+import AddBaseColor from "@/app/_components/AddBaseColor";
 import ContrastRatioPalette from "@/app/_components/ContrastRatioPalette";
-import ColorInput from "@/app/_components/ColorInput";
 import Footer from "@/app/_components/Footer";
 import GenerateShade from "@/app/_components/GenerateShade";
 import TailwindColorPalette from "@/app/_components/TailwindColorPalette";
@@ -38,7 +38,7 @@ export default function Page() {
     <SettingsProvider>
       <Heading as="h1">Color Tool</Heading>
 
-      <ColorInput />
+      <AddBaseColor />
 
       <TailwindColorPalette />
 

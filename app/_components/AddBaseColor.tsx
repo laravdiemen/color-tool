@@ -11,7 +11,7 @@ import { isValidHexColor } from "@/app/_lib/colors";
 import Wrapper from "@/app/_ui/Wrapper";
 import Heading from "@/app/_ui/Heading";
 
-export default function ColorInput() {
+export default function AddBaseColor() {
   const [colorTextInput, setColorTextInput] = useState("");
   const [colorPickerInput, setColorPickerInput] = useState("");
   const { baseColor, updateBaseColor, requiredContrastRatio } = useSettings();
