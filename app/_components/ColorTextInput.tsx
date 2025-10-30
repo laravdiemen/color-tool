@@ -3,12 +3,14 @@ import { type ChangeEvent } from "react";
 
 type ColorTextInputProps = {
   label?: string;
+  showLabel?: boolean;
   value: string;
   setValue: (value: string) => void;
 };
 
 export default function ColorTextInput({
   label,
+  showLabel = false,
   value,
   setValue,
 }: ColorTextInputProps) {
@@ -25,7 +27,10 @@ export default function ColorTextInput({
 
   return (
     <div>
-      <label htmlFor="hex-color-input" className="sr-only">
+      <label
+        htmlFor="hex-color-input"
+        className={showLabel ? "mb-1 block font-medium" : "sr-only"}
+      >
         {label || "Hex color"}
       </label>
       <div className="relative">

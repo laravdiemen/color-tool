@@ -8,6 +8,7 @@ import { SettingsProvider } from "@/app/_contexts/SettingsContext";
 import { BODY_CLASS_TABBING } from "@/app/_lib/constants";
 import AccessibleColorAlternatives from "@/app/_sections/AccessibleColorAlternatives";
 import AddBaseColor from "@/app/_sections/AddBaseColor";
+import ContrastRatioChecker from "@/app/_sections/ContrastRatioChecker";
 import ContrastRatioPalette from "@/app/_sections/ContrastRatioPalette";
 import Footer from "@/app/_sections/Footer";
 import GenerateShade from "@/app/_sections/GenerateShade";
@@ -49,6 +50,8 @@ export default function Page() {
       <ContrastRatioPalette />
 
       <AccessibleColorAlternatives />
+
+      <ContrastRatioChecker />
 
       <Footer />
     </SettingsProvider>
