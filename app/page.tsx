@@ -4,15 +4,15 @@
 import { useEffect } from "react";
 
 // Internal dependencies
-import AccessibleColorAlternatives from "@/app/_components/AccessibleColorAlternatives";
-import AddBaseColor from "@/app/_components/AddBaseColor";
-import ContrastRatioPalette from "@/app/_components/ContrastRatioPalette";
-import Footer from "@/app/_components/Footer";
-import GenerateShade from "@/app/_components/GenerateShade";
-import TailwindColorPalette from "@/app/_components/TailwindColorPalette";
 import { SettingsProvider } from "@/app/_contexts/SettingsContext";
-import Heading from "@/app/_ui/Heading";
 import { BODY_CLASS_TABBING } from "@/app/_lib/constants";
+import AccessibleColorAlternatives from "@/app/_sections/AccessibleColorAlternatives";
+import AddBaseColor from "@/app/_sections/AddBaseColor";
+import ContrastRatioPalette from "@/app/_sections/ContrastRatioPalette";
+import Footer from "@/app/_sections/Footer";
+import GenerateShade from "@/app/_sections/GenerateShade";
+import TailwindColorPalette from "@/app/_sections/TailwindColorPalette";
+import Heading from "@/app/_ui/Heading";
 
 export default function Page() {
   useEffect(() => {
