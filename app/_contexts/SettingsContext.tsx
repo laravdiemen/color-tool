@@ -9,9 +9,9 @@ import {
   useCallback,
   type ReactNode,
 } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 // Internal dependencies
+import { useSearchParamsState } from "@/app/_hooks/useSearchParamsState";
 import {
   generateColorPalette,
   generateAccessibleColors,
@@ -62,9 +62,8 @@ const defaultSettings: SettingsContextValue = {
 const SettingsContext = createContext<SettingsContextValue>(defaultSettings);
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
+  const { getSearchParam, setSearchParam, deleteSearchParam } =
+    useSearchParamsState();
 
   const [baseColor, setBaseColor] = useState(defaultSettings.baseColor);
   const [colorPalette, setColorPalette] = useState(
@@ -76,18 +75,6 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   const [requiredContrastRatio, setRequiredContrastRatio] =
     useState<ContrastRatio>(defaultSettings.requiredContrastRatio);
 
-  const updateSearchParams = useCallback(
-    (newParams: URLSearchParams) => {
-      const newUrl = `${pathname}?${newParams.toString()}`;
-      const currentUrl = `${pathname}?${searchParams.toString()}`;
-
-      if (newUrl !== currentUrl) {
-        router.replace(newUrl, { scroll: false });
-      }
-    },
-    [pathname, router, searchParams],
-  );
-
   const updateBaseColor = useCallback(
     (color: string, ratio: ContrastRatio) => {
       if (!isValidHexColor(color)) return;
@@ -96,18 +83,10 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       setColorPalette(generateColorPalette(color));
       setAccessibleColors(generateAccessibleColors(color, ratio));
 
-      const params = new URLSearchParams(searchParams);
-      params.set("color", color.substring(1));
-      updateSearchParams(params);
+      setSearchParam("color", color.substring(1));
     },
-    [updateSearchParams, searchParams],
+    [setSearchParam],
   );
-
-  const removeColorParam = useCallback(() => {
-    const params = new URLSearchParams(searchParams);
-    params.delete("color");
-    updateSearchParams(params);
-  }, [updateSearchParams, searchParams]);
 
   const updateRequiredContrastRatio = useCallback(
     (ratio: ContrastRatio) => {
@@ -117,31 +96,28 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
 
       setRequiredContrastRatio(ratio);
 
-      const params = new URLSearchParams(searchParams);
-      params.set("ratio", ratio.toString());
-      updateSearchParams(params);
+      setSearchParam("ratio", ratio.toString());
     },
-    [updateSearchParams, searchParams],
+    [setSearchParam],
   );
 
-  const resetContrastRatioParam = useCallback(() => {
-    const params = new URLSearchParams(searchParams);
-    params.set("ratio", POSSIBLE_CONTRAST_RATIO[1].toString());
-    updateSearchParams(params);
-  }, [updateSearchParams, searchParams]);
-
   useEffect(() => {
-    const activeColor = searchParams.get("color");
+    const activeColor = getSearchParam("color");
 
     if (activeColor && isValidHexColor("#" + activeColor)) {
       updateBaseColor("#" + activeColor, requiredContrastRatio);
     } else {
-      removeColorParam();
+      deleteSearchParam("color");
     }
-  }, [requiredContrastRatio, searchParams, updateBaseColor, removeColorParam]);
+  }, [
+    getSearchParam,
+    requiredContrastRatio,
+    updateBaseColor,
+    deleteSearchParam,
+  ]);
 
   useEffect(() => {
-    const activeRatioParam = searchParams.get("ratio");
+    const activeRatioParam = getSearchParam("ratio");
     const activeRatio = activeRatioParam ? Number(activeRatioParam) : null;
 
     if (
@@ -150,9 +126,9 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     ) {
       setRequiredContrastRatio(activeRatio as ContrastRatio);
     } else {
-      resetContrastRatioParam();
+      setSearchParam("ratio", POSSIBLE_CONTRAST_RATIO[1].toString());
     }
-  }, [searchParams, resetContrastRatioParam]);
+  }, [getSearchParam, setSearchParam]);
 
   return (
     <SettingsContext.Provider
