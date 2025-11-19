@@ -2,6 +2,7 @@
 import { type ChangeEvent } from "react";
 
 type ColorTextInputProps = {
+  id?: string;
   label?: string;
   showLabel?: boolean;
   value: string;
@@ -9,6 +10,7 @@ type ColorTextInputProps = {
 };
 
 export default function ColorTextInput({
+  id = "hex-color-input",
   label,
   showLabel = false,
   value,
@@ -28,7 +30,7 @@ export default function ColorTextInput({
   return (
     <div>
       <label
-        htmlFor="hex-color-input"
+        htmlFor={id}
         className={showLabel ? "mb-1 block font-medium" : "sr-only"}
       >
         {label || "Hex color"}
@@ -37,7 +39,7 @@ export default function ColorTextInput({
         <span className="absolute top-1/2 left-2 -translate-y-1/2">#</span>
 
         <input
-          id="hex-color-input"
+          id={id}
           type="text"
           value={value}
           onChange={handleOnChange}

@@ -44,9 +44,14 @@ export default function AddBaseColor() {
       <div className="flex flex-wrap items-center gap-4">
         <Heading as="h2">Add your base color:</Heading>
 
-        <ColorTextInput value={colorTextInput} setValue={handleOnChangeColor} />
+        <ColorTextInput
+          id="hex-color-input-base"
+          value={colorTextInput}
+          setValue={handleOnChangeColor}
+        />
 
         <ColorPickerInput
+          id="color-picker-base"
           value={colorPickerInput}
           setValue={handleColorPickerInput}
         />

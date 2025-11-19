@@ -64,24 +64,28 @@ export default function ContrastRatioChecker() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-wrap items-end gap-4">
             <ColorTextInput
+              id="hex-color-input-background"
               label="Background color"
               showLabel={true}
               value={backgroundColor}
               setValue={handleOnChangeBackgroundColor}
             />
             <ColorPickerInput
+              id="color-picker-background"
               value={"#" + backgroundColor}
               setValue={handleOnChangeBackgroundColor}
             />
           </div>
           <div className="flex flex-wrap items-end gap-4">
             <ColorTextInput
+              id="hex-color-input-foreground"
               label="Foreground color"
               showLabel={true}
               value={foregroundColor}
               setValue={handleOnChangeForegroundColor}
             />
             <ColorPickerInput
+              id="color-picker-foreground"
               value={"#" + foregroundColor}
               setValue={handleOnChangeForegroundColor}
             />

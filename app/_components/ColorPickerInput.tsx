@@ -3,12 +3,14 @@ import { type ChangeEvent } from "react";
 import { EyeDropperIcon } from "@heroicons/react/24/outline";
 
 type ColorPickerInputProps = {
+  id?: string;
   label?: string;
   value: string;
   setValue: (value: string) => void;
 };
 
 export default function ColorPickerInput({
+  id = "color-picker",
   label,
   value,
   setValue,
@@ -21,13 +23,13 @@ export default function ColorPickerInput({
 
   return (
     <div>
-      <label htmlFor="color-picker" className="sr-only">
+      <label htmlFor={id} className="sr-only">
         {label || "Color picker"}
       </label>
       <div className="hocus:bg-slate-400 dark:hocus:bg-slate-50 dark:hocus:text-slate-950 has-input-focus:outline-animation relative rounded-sm border border-slate-400 p-2.5 transition-colors dark:border-slate-50">
         <EyeDropperIcon className="pointer-events-none size-4" />
         <input
-          id="color-picker"
+          id={id}
           type="color"
           value={value || "#000000"}
           onChange={handleOnChange}
