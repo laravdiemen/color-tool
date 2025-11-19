@@ -49,15 +49,14 @@ export default function GenerateShade({
 
       <div className="flex flex-wrap items-center gap-8">
         <div>
-          <label htmlFor="shade" className="sr-only">
+          <label htmlFor={`shade-${background}`} className="sr-only">
             {backgroundShade} shade opacity
           </label>
           <div className="mb-2 flex gap-x-4">
             <span aria-hidden="true">0</span>
             <input
               type="range"
-              id="shade"
-              name="shade"
+              id={`shade-${background}`}
               value={shade}
               onChange={(e) => setShade(Number(e.target.value))}
               min="0"
