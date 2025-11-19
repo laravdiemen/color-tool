@@ -1,0 +1,4 @@
+1:"$Sreact.fragment"
+2:I[91727,["/color-tool/_next/static/chunks/03f7696a037c1328.js","/color-tool/_next/static/chunks/811cb1b17fff271f.js"],"default"]
+3:I[89033,["/color-tool/_next/static/chunks/03f7696a037c1328.js","/color-tool/_next/static/chunks/811cb1b17fff271f.js"],"default"]
+0:{"buildId":"yKsKTjpUaZIK6kC0egC_x","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
