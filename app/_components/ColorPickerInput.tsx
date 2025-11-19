@@ -29,7 +29,7 @@ export default function ColorPickerInput({
         <input
           id="color-picker"
           type="color"
-          value={value}
+          value={value || "#000000"}
           onChange={handleOnChange}
           className="absolute inset-0 size-full opacity-0"
         />

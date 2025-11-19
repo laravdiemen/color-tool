@@ -76,6 +76,18 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   const [requiredContrastRatio, setRequiredContrastRatio] =
     useState<ContrastRatio>(defaultSettings.requiredContrastRatio);
 
+  const updateSearchParams = useCallback(
+    (newParams: URLSearchParams) => {
+      const newUrl = `${pathname}?${newParams.toString()}`;
+      const currentUrl = `${pathname}?${searchParams.toString()}`;
+
+      if (newUrl !== currentUrl) {
+        router.replace(newUrl, { scroll: false });
+      }
+    },
+    [pathname, router, searchParams],
+  );
+
   const updateBaseColor = useCallback(
     (color: string, ratio: ContrastRatio) => {
       if (!isValidHexColor(color)) return;
@@ -86,17 +98,16 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
 
       const params = new URLSearchParams(searchParams);
       params.set("color", color.substring(1));
-      params.set("ratio", ratio.toString());
-      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+      updateSearchParams(params);
     },
-    [searchParams, router, pathname],
+    [updateSearchParams, searchParams],
   );
 
   const removeColorParam = useCallback(() => {
     const params = new URLSearchParams(searchParams);
     params.delete("color");
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-  }, [searchParams, router, pathname]);
+    updateSearchParams(params);
+  }, [updateSearchParams, searchParams]);
 
   const updateRequiredContrastRatio = useCallback(
     (ratio: ContrastRatio) => {
@@ -108,16 +119,16 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
 
       const params = new URLSearchParams(searchParams);
       params.set("ratio", ratio.toString());
-      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+      updateSearchParams(params);
     },
-    [searchParams, router, pathname],
+    [updateSearchParams, searchParams],
   );
 
   const resetContrastRatioParam = useCallback(() => {
     const params = new URLSearchParams(searchParams);
     params.set("ratio", POSSIBLE_CONTRAST_RATIO[1].toString());
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-  }, [searchParams, router, pathname]);
+    updateSearchParams(params);
+  }, [updateSearchParams, searchParams]);
 
   useEffect(() => {
     const activeColor = searchParams.get("color");
