@@ -2,9 +2,9 @@
 import { type ReactNode, Suspense } from "react";
 import { Roboto } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+import { ThemeProvider } from "next-themes";
 
 // Internal dependencies
-import Providers from "@/app/providers";
 import "@/app/_styles/globals.css";
 
 const roboto = Roboto({
@@ -29,7 +29,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={`${roboto.variable} bg-slate-50 font-sans text-slate-950 antialiased dark:bg-slate-950 dark:text-slate-300`}
       >
-        <Providers>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <main className="mx-auto grid max-w-7xl grid-cols-12 gap-4 px-4 py-6 *:col-span-12 md:py-8">
             <Suspense>{children}</Suspense>
 
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               }}
             />
           </main>
-        </Providers>
+        </ThemeProvider>
       </body>
     </html>
   );
