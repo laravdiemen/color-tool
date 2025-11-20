@@ -4,7 +4,7 @@
 import { useEffect } from "react";
 
 // Internal dependencies
-import { SettingsProvider } from "@/app/_contexts/SettingsContext";
+import ThemeToggle from "@/app/_components/ThemeToggle";
 import { BODY_CLASS_TABBING } from "@/app/_lib/constants";
 import AccessibleColorAlternatives from "@/app/_sections/AccessibleColorAlternatives";
 import AddBaseColor from "@/app/_sections/AddBaseColor";
@@ -36,8 +36,12 @@ export default function Page() {
   }, []);
 
   return (
-    <SettingsProvider>
-      <Heading as="h1">Color Tool</Heading>
+    <>
+      <div className="flex flex-wrap justify-between gap-4">
+        <Heading as="h1">Color Tool</Heading>
+
+        <ThemeToggle />
+      </div>
 
       <AddBaseColor />
 
@@ -54,6 +58,6 @@ export default function Page() {
       <ContrastRatioChecker />
 
       <Footer />
-    </SettingsProvider>
+    </>
   );
 }
