@@ -62,7 +62,7 @@ export default function GenerateShade({
               min="0"
               max="1"
               step="0.01"
-              className="accent-slate-600"
+              className="accent-slate-600 dark:accent-slate-400"
             />
             <span aria-hidden="true">1</span>
           </div>

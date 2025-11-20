@@ -121,7 +121,7 @@ export default function ContrastRatioChecker() {
                   >
                     <span className="text-lg font-bold">{ratio}:1</span>
                     <div
-                      className={`inline-flex size-8 items-center justify-center rounded-full ${passes ? "bg-green-700 text-white" : "bg-red-600 text-white"}`}
+                      className={`inline-flex size-8 items-center justify-center rounded-full ${passes ? "bg-green-700 text-white dark:bg-green-900" : "bg-red-600 text-white dark:bg-red-800"}`}
                     >
                       {passes ? (
                         <>

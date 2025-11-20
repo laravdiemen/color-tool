@@ -27,7 +27,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${roboto.variable} bg-slate-50 font-sans text-slate-950 antialiased dark:bg-slate-950 dark:text-slate-50`}
+        className={`${roboto.variable} bg-slate-50 font-sans text-slate-950 antialiased dark:bg-slate-950 dark:text-slate-300`}
       >
         <Providers>
           <main className="mx-auto grid max-w-7xl grid-cols-12 gap-4 px-4 py-6 *:col-span-12 md:py-8">

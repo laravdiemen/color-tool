@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="pt-2 md:pt-4">
-      <p className="mb-0 text-center text-sm leading-relaxed text-slate-500">
+      <p className="mb-0 text-center text-sm leading-relaxed text-slate-500 dark:text-slate-300">
         <span aria-hidden="true">🎨</span> Color Tool{" "}
         <span className="mx-1" aria-hidden="true">
           •

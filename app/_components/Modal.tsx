@@ -93,7 +93,7 @@ function ModalDialog({ title, children }: ModalDialogProps) {
     <dialog
       ref={ref}
       onCancel={() => focusTrapModal?.deactivate()}
-      className="m-auto max-h-[calc(100%-4rem)] w-[calc(100%-2rem)] max-w-4xl scale-90 rounded-lg bg-slate-200 p-4 text-slate-950 opacity-0 transition-all transition-discrete duration-300 backdrop:pointer-events-none backdrop:bg-slate-950/0 backdrop:transition-all backdrop:transition-discrete backdrop:duration-300 *:first:mt-0 *:last:mb-0 open:scale-100 open:opacity-100 open:backdrop:bg-slate-950/50 md:max-h-[calc(100%-10rem)] md:rounded-2xl md:p-6 dark:bg-slate-900 dark:text-slate-50 dark:open:backdrop:bg-slate-50/50 starting:open:scale-90 starting:open:opacity-0 starting:open:backdrop:bg-slate-950/0"
+      className="m-auto max-h-[calc(100%-4rem)] w-[calc(100%-2rem)] max-w-4xl scale-90 rounded-lg bg-slate-200 p-4 text-slate-950 opacity-0 transition-all transition-discrete duration-300 backdrop:pointer-events-none backdrop:bg-slate-950/0 backdrop:transition-all backdrop:transition-discrete backdrop:duration-300 *:first:mt-0 *:last:mb-0 open:scale-100 open:opacity-100 open:backdrop:bg-slate-950/50 md:max-h-[calc(100%-10rem)] md:rounded-2xl md:p-6 dark:bg-slate-900 dark:text-slate-300 dark:open:backdrop:bg-slate-400/50 starting:open:scale-90 starting:open:opacity-0 starting:open:backdrop:bg-slate-950/0"
     >
       <div className="mb-3 flex items-start justify-between gap-2">
         <Heading as="h2">{title}</Heading>

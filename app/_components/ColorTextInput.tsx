@@ -45,7 +45,7 @@ export default function ColorTextInput({
           onChange={handleOnChange}
           maxLength={7}
           placeholder="RRGGBB"
-          className="rounded-sm border border-slate-400 py-1.5 pr-3 pl-5 dark:border-slate-50"
+          className="rounded-sm border border-slate-400 py-1.5 pr-3 pl-5 dark:border-slate-400"
         />
       </div>
     </div>

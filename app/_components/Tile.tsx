@@ -108,7 +108,9 @@ function PassesContrastLabel({
     <div className="flex min-w-11 flex-col items-center gap-2 max-sm:ml-auto">
       <div
         className={`${
-          passesContrast ? "bg-green-700 text-white" : "bg-red-600 text-white"
+          passesContrast
+            ? "bg-green-700 text-white dark:bg-green-900"
+            : "bg-red-600 text-white dark:bg-red-800"
         } flex size-8 items-center justify-center rounded-full`}
       >
         {passesContrast ? (
