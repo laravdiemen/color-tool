@@ -20,7 +20,7 @@ export default function ContrastRatioChecker() {
   const { baseColor } = useSettings();
 
   useEffect(() => {
-    if (baseColor && backgroundColor === "") {
+    if (baseColor) {
       handleOnChangeBackgroundColor(baseColor);
     }
 
