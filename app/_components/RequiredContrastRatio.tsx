@@ -1,8 +1,8 @@
 "use client";
 
 // Internal dependencies
-import { useSettings } from "@/app/_contexts/SettingsContext";
 import AccessibilityInfoModal from "@/app/_components/AccessibilityInfoModal";
+import { useSettings } from "@/app/_contexts/SettingsContext";
 import { POSSIBLE_CONTRAST_RATIO } from "@/app/_lib/constants";
 
 export default function RequiredContrastRatio() {

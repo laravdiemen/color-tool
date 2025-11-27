@@ -4,12 +4,12 @@
 import { useEffect, useState } from "react";
 
 // Internal dependencies
-import { useSettings } from "@/app/_contexts/SettingsContext";
 import Tile from "@/app/_components/Tile";
-import Wrapper from "@/app/_ui/Wrapper";
-import Heading from "@/app/_ui/Heading";
+import { useSettings } from "@/app/_contexts/SettingsContext";
 import { getHexColorWithOpacity, getSingleColor } from "@/app/_lib/colors";
 import { type Color } from "@/app/_lib/types";
+import Heading from "@/app/_ui/Heading";
+import Wrapper from "@/app/_ui/Wrapper";
 
 type GenerateShadeProps = {
   background: 0 | 255;

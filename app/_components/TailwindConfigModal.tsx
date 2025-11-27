@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 // Internal dependencies
-import { useSettings } from "@/app/_contexts/SettingsContext";
 import Modal from "@/app/_components/Modal";
-import Heading from "@/app/_ui/Heading";
+import { useSettings } from "@/app/_contexts/SettingsContext";
 import CopyCode from "@/app/_ui/CopyCode";
+import Heading from "@/app/_ui/Heading";
 
 export default function TailwindConfigModal() {
   const [tailwindConfigV3, setTailwindConfigV3] = useState("");

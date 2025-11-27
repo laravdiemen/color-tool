@@ -1,6 +1,6 @@
 // External dependencies
-import { type ChangeEvent } from "react";
 import { EyeDropperIcon } from "@heroicons/react/24/outline";
+import { type ChangeEvent } from "react";
 
 type ColorPickerInputProps = {
   id?: string;

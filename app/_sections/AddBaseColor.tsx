@@ -8,8 +8,8 @@ import ColorPickerInput from "@/app/_components/ColorPickerInput";
 import ColorTextInput from "@/app/_components/ColorTextInput";
 import { useSettings } from "@/app/_contexts/SettingsContext";
 import { isValidHexColor } from "@/app/_lib/colors";
-import Wrapper from "@/app/_ui/Wrapper";
 import Heading from "@/app/_ui/Heading";
+import Wrapper from "@/app/_ui/Wrapper";
 
 export default function AddBaseColor() {
   const [colorTextInput, setColorTextInput] = useState("");

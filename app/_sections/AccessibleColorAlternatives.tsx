@@ -1,11 +1,11 @@
 "use client";
 
 // Internal dependencies
-import { useSettings } from "@/app/_contexts/SettingsContext";
 import Tile from "@/app/_components/Tile";
-import Wrapper from "@/app/_ui/Wrapper";
-import Heading from "@/app/_ui/Heading";
+import { useSettings } from "@/app/_contexts/SettingsContext";
 import Button from "@/app/_ui/Button";
+import Heading from "@/app/_ui/Heading";
+import Wrapper from "@/app/_ui/Wrapper";
 
 export default function AccessibleColorAlternatives() {
   const {

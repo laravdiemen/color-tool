@@ -17,12 +17,12 @@ import {
   generateAccessibleColors,
   isValidHexColor,
 } from "@/app/_lib/colors";
+import { POSSIBLE_CONTRAST_RATIO } from "@/app/_lib/constants";
 import {
   type ContrastRatio,
   type ColorPalette,
   type AccessibleColors,
 } from "@/app/_lib/types";
-import { POSSIBLE_CONTRAST_RATIO } from "@/app/_lib/constants";
 
 type SettingsContextValue = {
   baseColor: string;

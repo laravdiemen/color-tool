@@ -1,11 +1,11 @@
 "use client";
 
 // Internal dependencies
-import { useSettings } from "@/app/_contexts/SettingsContext";
 import TailwindConfigModal from "@/app/_components/TailwindConfigModal";
 import Tile from "@/app/_components/Tile";
-import Wrapper from "@/app/_ui/Wrapper";
+import { useSettings } from "@/app/_contexts/SettingsContext";
 import Heading from "@/app/_ui/Heading";
+import Wrapper from "@/app/_ui/Wrapper";
 
 export default function TailwindColorPalette() {
   const { baseColor, colorPalette } = useSettings();

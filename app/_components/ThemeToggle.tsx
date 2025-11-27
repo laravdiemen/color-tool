@@ -2,8 +2,8 @@
 
 // External dependencies
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
-import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 // Internal dependencies
 import Button from "@/app/_ui/Button";

@@ -1,6 +1,6 @@
 // External dependencies
-import { useCallback } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { useCallback } from "react";
 
 export function useSearchParamsState() {
   const router = useRouter();

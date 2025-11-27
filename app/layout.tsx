@@ -1,8 +1,8 @@
 // External dependencies
-import { type ReactNode, Suspense } from "react";
 import { Roboto } from "next/font/google";
-import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "next-themes";
+import { type ReactNode, Suspense } from "react";
+import { Toaster } from "react-hot-toast";
 
 // Internal dependencies
 import "@/app/_styles/globals.css";

@@ -4,8 +4,8 @@
 import { useEffect } from "react";
 
 // Internal dependencies
-import { SettingsProvider } from "@/app/_contexts/SettingsContext";
 import ThemeToggle from "@/app/_components/ThemeToggle";
+import { SettingsProvider } from "@/app/_contexts/SettingsContext";
 import { BODY_CLASS_TABBING } from "@/app/_lib/constants";
 import AccessibleColorAlternatives from "@/app/_sections/AccessibleColorAlternatives";
 import AddBaseColor from "@/app/_sections/AddBaseColor";

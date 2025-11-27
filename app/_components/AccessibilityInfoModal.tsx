@@ -1,5 +1,6 @@
 // Internal dependencies
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
+
 import Modal from "@/app/_components/Modal";
 
 export default function AccessibilityInfoModal() {

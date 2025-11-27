@@ -1,6 +1,9 @@
 "use client";
 
 // External dependencies
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import * as focusTrap from "focus-trap";
 import {
   createContext,
   useContext,
@@ -9,14 +12,11 @@ import {
   useEffect,
   type ReactNode,
 } from "react";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import * as focusTrap from "focus-trap";
-import { XMarkIcon } from "@heroicons/react/24/outline";
 
 // Internal dependencies
+import { checkCanFocusTrap } from "@/app/_lib/focus-trap";
 import Button from "@/app/_ui/Button";
 import Heading from "@/app/_ui/Heading";
-import { checkCanFocusTrap } from "@/app/_lib/focus-trap";
 
 type ModalContextValue = {
   ref: React.RefObject<HTMLDialogElement | null>;

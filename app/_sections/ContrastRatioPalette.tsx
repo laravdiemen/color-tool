@@ -1,11 +1,11 @@
 "use client";
 
 // Internal dependencies
-import { useSettings } from "@/app/_contexts/SettingsContext";
-import Tile from "@/app/_components/Tile";
 import RequiredContrastRatio from "@/app/_components/RequiredContrastRatio";
-import Wrapper from "@/app/_ui/Wrapper";
+import Tile from "@/app/_components/Tile";
+import { useSettings } from "@/app/_contexts/SettingsContext";
 import Heading from "@/app/_ui/Heading";
+import Wrapper from "@/app/_ui/Wrapper";
 
 export default function ContrastRatioPalette() {
   const { baseColor, colorPalette } = useSettings();
