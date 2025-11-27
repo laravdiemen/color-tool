@@ -25,7 +25,7 @@ export default function AccessibleColorAlternatives() {
       return null;
 
     return (
-      <Wrapper key={key} className="md:!col-span-6">
+      <Wrapper key={key} className="md:col-span-6!">
         <Heading as="h2" className="mb-2">
           Accessible alternative
         </Heading>

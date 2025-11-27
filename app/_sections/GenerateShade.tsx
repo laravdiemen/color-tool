@@ -37,7 +37,7 @@ export default function GenerateShade({
   if (!colorPalette[500]) return;
 
   return (
-    <Wrapper className="md:!col-span-6">
+    <Wrapper className="md:col-span-6!">
       <Heading as="h2" className="mb-2">
         Generate {backgroundShade} shade
       </Heading>

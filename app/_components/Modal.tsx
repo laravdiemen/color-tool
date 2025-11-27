@@ -97,7 +97,7 @@ function ModalDialog({ title, children }: ModalDialogProps) {
     >
       <div className="mb-3 flex items-start justify-between gap-2">
         <Heading as="h2">{title}</Heading>
-        <Button onClick={() => focusTrapModal?.deactivate()} className="!p-2">
+        <Button onClick={() => focusTrapModal?.deactivate()} className="p-2!">
           <XMarkIcon
             className="pointer-events-none size-5"
             aria-hidden="true"

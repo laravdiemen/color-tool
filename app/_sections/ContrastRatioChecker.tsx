@@ -108,7 +108,7 @@ export default function ContrastRatioChecker() {
 
         {backgroundColor && foregroundColor && contrastRatio && (
           <div>
-            <Heading as="h3" className="mb-2 !text-base">
+            <Heading as="h3" className="mb-2 text-base!">
               Passes contrast ratio
             </Heading>
             <ul>
