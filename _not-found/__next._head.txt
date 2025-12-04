@@ -1,7 +1,7 @@
 1:"$Sreact.fragment"
-2:I[50497,["/color-tool/_next/static/chunks/f8bba430cb9a9e29.js","/color-tool/_next/static/chunks/811cb1b17fff271f.js"],"ViewportBoundary"]
-4:I[50497,["/color-tool/_next/static/chunks/f8bba430cb9a9e29.js","/color-tool/_next/static/chunks/811cb1b17fff271f.js"],"MetadataBoundary"]
+2:I[50497,["/color-tool/_next/static/chunks/81db3fb3a98b1a77.js","/color-tool/_next/static/chunks/811cb1b17fff271f.js"],"ViewportBoundary"]
+4:I[50497,["/color-tool/_next/static/chunks/81db3fb3a98b1a77.js","/color-tool/_next/static/chunks/811cb1b17fff271f.js"],"MetadataBoundary"]
 5:"$Sreact.suspense"
-0:{"buildId":"9Y-M-2IXxxt1L2f__GzN3","rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L2",null,{"children":"$@3"}],["$","div",null,{"hidden":true,"children":["$","$L4",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":"$@6"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"e5ndrpw9QqCUJCEDiEN4g","rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L2",null,{"children":"$@3"}],["$","div",null,{"hidden":true,"children":["$","$L4",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":"$@6"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}
 3:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 6:[["$","title","0",{"children":"Welcome | Color Tool"}],["$","meta","1",{"name":"description","content":"Generated colors for your next project"}]]
