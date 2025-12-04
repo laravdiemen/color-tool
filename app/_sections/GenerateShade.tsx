@@ -1,13 +1,12 @@
 "use client";
 
 // External dependencies
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 
 // Internal dependencies
 import Tile from "@/app/_components/Tile";
 import { useSettings } from "@/app/_contexts/SettingsContext";
 import { getHexColorWithOpacity, getSingleColor } from "@/app/_lib/colors";
-import { type Color } from "@/app/_lib/types";
 import Heading from "@/app/_ui/Heading";
 import Wrapper from "@/app/_ui/Wrapper";
 
@@ -22,16 +21,14 @@ export default function GenerateShade({
   const backgroundShade = background === 255 ? "lighter" : "darker";
 
   const [shade, setShade] = useState(0.8);
-  const [shadeColor, setShadeColor] = useState<Color | undefined>(undefined);
 
   const { baseColor, colorPalette } = useSettings();
 
-  useEffect(() => {
-    if (!baseColor) return;
+  const shadeColor = useMemo(() => {
+    if (!baseColor) return undefined;
 
     const lighterColor = getHexColorWithOpacity(baseColor, shade, background);
-    const lighterColorObject = getSingleColor(baseColor, lighterColor);
-    setShadeColor(lighterColorObject);
+    return getSingleColor(baseColor, lighterColor);
   }, [shade, baseColor, background]);
 
   if (!colorPalette[500]) return;

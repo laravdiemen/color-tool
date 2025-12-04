@@ -1,7 +1,7 @@
 "use client";
 
 // External dependencies
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import toast from "react-hot-toast";
 
 // Internal dependencies
@@ -11,41 +11,34 @@ import CopyCode from "@/app/_ui/CopyCode";
 import Heading from "@/app/_ui/Heading";
 
 export default function TailwindConfigModal() {
-  const [tailwindConfigV3, setTailwindConfigV3] = useState("");
-  const [tailwindConfigV4, setTailwindConfigV4] = useState("");
   const { colorPalette } = useSettings();
 
-  useEffect(() => {
-    function generateTailwindConfigV3() {
-      let config = `primary: {\n\tDEFAULT: '${colorPalette[500].color}',\n`;
+  const tailwindConfigV3 = useMemo(() => {
+    let config = `primary: {\n\tDEFAULT: '${colorPalette[500].color}',\n`;
 
-      Object.entries(colorPalette).forEach(([key, value]) => {
-        if (key === "0" || key === "1000") return;
+    Object.entries(colorPalette).forEach(([key, value]) => {
+      if (key === "0" || key === "1000") return;
 
-        config += `\t${key}: '${value.color}',\n`;
-      });
+      config += `\t${key}: '${value.color}',\n`;
+    });
 
-      config += "}";
+    config += "}";
 
-      return config;
-    }
+    return config;
+  }, [colorPalette]);
 
-    function generateTailwindConfigV4() {
-      let config = "";
+  const tailwindConfigV4 = useMemo(() => {
+    let config = "";
 
-      config += "--color-primary: var(--color-primary-500);\n";
+    config += "--color-primary: var(--color-primary-500);\n";
 
-      Object.entries(colorPalette).forEach(([key, value]) => {
-        if (key === "0" || key === "1000") return;
+    Object.entries(colorPalette).forEach(([key, value]) => {
+      if (key === "0" || key === "1000") return;
 
-        config += `--color-primary-${key}: ${value.color};\n`;
-      });
+      config += `--color-primary-${key}: ${value.color};\n`;
+    });
 
-      return config;
-    }
-
-    setTailwindConfigV3(generateTailwindConfigV3());
-    setTailwindConfigV4(generateTailwindConfigV4());
+    return config;
   }, [colorPalette]);
 
   function copyTailwindConfigToClipboard(config: string, version: string) {
