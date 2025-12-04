@@ -6,7 +6,7 @@ import Modal from "@/app/_components/Modal";
 export default function AccessibilityInfoModal() {
   return (
     <Modal>
-      <Modal.ModalButton className="border-transparent !px-2">
+      <Modal.ModalButton className="border-transparent px-2!">
         <InformationCircleIcon className="pointer-events-none size-6" />
         <span className="sr-only">Contrast ratio explanation</span>
       </Modal.ModalButton>

@@ -9,6 +9,7 @@ import { SettingsProvider } from "@/app/_contexts/SettingsContext";
 import { BODY_CLASS_TABBING } from "@/app/_lib/constants";
 import AccessibleColorAlternatives from "@/app/_sections/AccessibleColorAlternatives";
 import AddBaseColor from "@/app/_sections/AddBaseColor";
+import ColorModels from "@/app/_sections/ColorModels";
 import ContrastRatioChecker from "@/app/_sections/ContrastRatioChecker";
 import ContrastRatioPalette from "@/app/_sections/ContrastRatioPalette";
 import Footer from "@/app/_sections/Footer";
@@ -45,6 +46,8 @@ export default function Page() {
       </div>
 
       <AddBaseColor />
+
+      <ColorModels />
 
       <TailwindColorPalette />
 

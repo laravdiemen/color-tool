@@ -100,10 +100,86 @@ export function parseHexColor(hexColor: string) {
       .join("");
   }
 
+  return hexColor;
+}
+
+// Helper function to convert hex color to RGB
+export function convertHexToRgb(hexColor: string) {
+  hexColor = parseHexColor(hexColor);
+
   return {
     red: parseInt(hexColor.substring(0, 2), 16),
     green: parseInt(hexColor.substring(2, 4), 16),
     blue: parseInt(hexColor.substring(4, 6), 16),
+  };
+}
+
+// Helper function to convert hex color to CMYK
+export function convertHexToCmyk(hexColor: string) {
+  const { red, green, blue } = convertHexToRgb(hexColor);
+
+  // Normalize RGB values to 0-1
+  const r = red / 255;
+  const g = green / 255;
+  const b = blue / 255;
+
+  // Compute K (black key)
+  const k = 1 - Math.max(r, g, b);
+
+  // Avoid division by zero
+  const c = k === 1 ? 0 : (1 - r - k) / (1 - k);
+  const m = k === 1 ? 0 : (1 - g - k) / (1 - k);
+  const y = k === 1 ? 0 : (1 - b - k) / (1 - k);
+
+  // Return percentages
+  return {
+    cyan: +(c * 100).toFixed(0),
+    magenta: +(m * 100).toFixed(0),
+    yellow: +(y * 100).toFixed(0),
+    key: +(k * 100).toFixed(0),
+  };
+}
+
+// Helper function to convert hex color to HSL
+export function convertHexToHsl(hexColor: string) {
+  const { red, green, blue } = convertHexToRgb(hexColor);
+
+  // Normalize RGB values to 0-1
+  const r = red / 255;
+  const g = green / 255;
+  const b = blue / 255;
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  const delta = max - min;
+
+  // Compute lightness
+  const l = (max + min) / 2;
+
+  // Compute saturation
+  let s = 0;
+  if (delta !== 0) {
+    s = delta / (1 - Math.abs(2 * l - 1));
+  }
+
+  // Compute hue
+  let h = 0;
+  if (delta !== 0) {
+    if (max === r) {
+      h = ((g - b) / delta) % 6;
+    } else if (max === g) {
+      h = (b - r) / delta + 2;
+    } else if (max === b) {
+      h = (r - g) / delta + 4;
+    }
+    h = h * 60;
+    if (h < 0) h += 360;
+  }
+
+  return {
+    hue: +h.toFixed(0), // 0 - 360
+    saturation: +(s * 100).toFixed(0), // 0 - 100%
+    lightness: +(l * 100).toFixed(0), // 0 - 100%
   };
 }
 
@@ -136,7 +212,7 @@ export function getHexColorWithOpacity(
   opacity: number,
   background: number = 255,
 ) {
-  const { red, green, blue } = parseHexColor(hexColor);
+  const { red, green, blue } = convertHexToRgb(hexColor);
 
   const blendedRed = blendColorComponent(red, opacity, background);
   const blendedGreen = blendColorComponent(green, opacity, background);
@@ -149,7 +225,7 @@ export function getHexColorWithOpacity(
 
 // Helper function to calculates the luminance of a hex color.
 export function getLuminance(hexColor: string) {
-  let { red, green, blue } = parseHexColor(hexColor);
+  let { red, green, blue } = convertHexToRgb(hexColor);
 
   red = sRGBToLinearRGB(red);
   green = sRGBToLinearRGB(green);

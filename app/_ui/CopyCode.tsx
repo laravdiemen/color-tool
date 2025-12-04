@@ -14,7 +14,7 @@ export default function CopyCode({ handleCopy, button, code }: CopyCodeProps) {
   return (
     <div className="relative mb-8 rounded bg-slate-300 p-4 pr-12 dark:bg-slate-800">
       <Button
-        className="absolute top-2 right-2 !border-transparent !p-2"
+        className="absolute top-2 right-2 border-transparent! p-2!"
         onClick={handleCopy}
       >
         <DocumentDuplicateIcon className="size-5" />
