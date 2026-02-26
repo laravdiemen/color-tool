@@ -15,7 +15,9 @@
     "lint:fix": "eslint . --ext .js,.ts,.jsx,.tsx --fix",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
-    "deploy": "npm run build && gh-pages -d out --nojekyll"
+    "deploy": "npm run build && gh-pages -d out --nojekyll",
+    "test": "vitest --run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -30,20 +32,26 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4.2.1",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
     "@types/body-scroll-lock": "^3.1.2",
     "@types/node": "^25.3.1",
     "@types/react": "^19.2.14",
     "@typescript-eslint/eslint-plugin": "^8.56.1",
     "@typescript-eslint/parser": "^8.56.1",
+    "@vitejs/plugin-react": "^5.1.4",
     "eslint": "^9.39.2",
     "eslint-config-next": "^15.2.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.5",
     "gh-pages": "^6.3.0",
+    "jsdom": "^28.1.0",
     "postcss": "^8",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "tailwindcss": "^4.2.1"
+    "tailwindcss": "^4.2.1",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.0.18"
   }
 }
